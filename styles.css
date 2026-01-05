@@ -513,6 +513,49 @@ html, body { width: 100%; overflow-x: hidden; }
   }
 }
 
+/* =========================
+   MOBILE HEADER: STOP STRETCH
+========================= */
+
+@media (max-width: 640px){
+
+  /* Ensure header doesn't become tall */
+  .topbar{
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 12px 0 !important;
+  }
+
+  /* IMPORTANT: stop "space-between" from stretching vertically */
+  .headerFlex{
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important; /* ✅ key fix */
+    gap: 10px !important;
+  }
+
+  /* Brand takes full width */
+  .brandWrapper{
+    width: 100% !important;
+  }
+
+  /* Menu sits just below brand, not at bottom */
+  .menu{
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    margin-top: 6px !important;
+  }
+
+  .menu a{
+    padding: 10px 12px !important;
+    border-radius: 10px !important;
+  }
+}
+
 
 
 
