@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Contact | Medha Pvt Limited</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <div class="logo" aria-hidden="true"></div>
+        <div>Medha Pvt Limited</div>
+      </a>
+      <nav class="menu" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="business.html">Business Lines</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <div class="heroCard">
+        <div class="kicker"><span class="kickerDot"></span> Contact</div>
+        <h1 style="margin-top:10px">Let’s discuss a project or partnership.</h1>
+        <p class="lead">Share your requirement and preferred vertical—we’ll respond with the right team.</p>
+      </div>
+
+      <div class="section" style="padding-top:18px">
+        <div class="grid">
+          <div class="card">
+            <h4>Corporate Office</h4>
+            <p>India (add full address)</p>
+            <div class="tag">Working hours: Mon–Sat</div>
+          </div>
+          <div class="card">
+            <h4>Email</h4>
+            <p>anubhavbhrdwj@gmail.com</p>
+            <div class="tag">Partnerships • Projects • Vendor onboarding</div>
+          </div>
+          <div class="card">
+            <h4>Phone</h4>
+            <p>+91-9560043428</p>
+            <div class="tag">Prefer WhatsApp? add number</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section" style="padding-top:0">
+        <div class="card">
+          <h3 style="margin-top:0">Inquiry form (front-end demo)</h3>
+          <form onsubmit="event.preventDefault(); alert('Thanks! Form demo only—connect to email/CRM later.');">
+            <div class="grid" style="grid-template-columns:1fr 1fr">
+              <div>
+                <label><b>Name</b><br/>
+                  <input required style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);margin-top:6px" />
+                </label>
+              </div>
+              <div>
+                <label><b>Company</b><br/>
+                  <input style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);margin-top:6px" />
+                </label>
+              </div>
+            </div>
+
+            <div style="margin-top:12px">
+              <label><b>Vertical</b><br/>
+                <select style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);margin-top:6px">
+                  <option>Infrastructure & EPC</option>
+                  <option>Power & Renewables</option>
+                  <option>Telecom & OFC</option>
+                  <option>IT Services</option>
+                  <option>Manufacturing & Supply</option>
+                  <option>Water & Utilities</option>
+                </select>
+              </label>
+            </div>
+
+            <div style="margin-top:12px">
+              <label><b>Requirement</b><br/>
+                <textarea required rows="5" style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);margin-top:6px"></textarea>
+              </label>
+            </div>
+
+            <div class="ctaRow">
+              <button class="btn primary" type="submit">Send inquiry</button>
+              <a class="btn ghost" href="business.html">Review business lines</a>
+            </div>
+          </form>
+
+          <hr class="sep"/>
+          <small>Next step: connect this form to email (SMTP), Google Forms, Zoho, HubSpot, or a simple server endpoint.</small>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <small>© <span id="year"></span> Medha Pvt Limited.</small>
+    </div>
+  </footer>
+
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

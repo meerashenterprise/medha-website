@@ -1,0 +1,381 @@
+:root{
+  --bg:#F7F8FA;
+  --card:#FFFFFF;
+  --text:#1A1F2B;
+  --muted:#5B6474;
+  --primary:#0B1F3B;
+  --accent:#2B6CB0;
+  --highlight:#F5A623;
+  --border: rgba(11,31,59,.12);
+  --shadow: 0 10px 30px rgba(11,31,59,.10);
+  --radius: 18px;
+  --max: 1120px;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.5;
+}
+
+a{color:inherit;text-decoration:none}
+.container{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+.topbar{
+  position:sticky; top:0; z-index:50;
+  background: rgba(247,248,250,.85);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 0;
+}
+.brand{
+  display:flex; gap:12px; align-items:center; font-weight:800; letter-spacing:.2px;
+}
+.logo{
+  width:38px;height:38px;border-radius:12px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  box-shadow: var(--shadow);
+}
+.menu{display:flex; gap:18px; align-items:center; color:var(--muted); font-weight:600}
+.menu a{padding:10px 10px;border-radius:12px}
+.menu a:hover{background:rgba(43,108,176,.08); color:var(--text)}
+
+.hero{
+  padding:56px 0 28px;
+}
+.heroGrid{
+  display:grid; gap:22px;
+  grid-template-columns: 1.15fr .85fr;
+  align-items:stretch;
+}
+.heroCard{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow: var(--shadow);
+  padding:28px;
+}
+.kicker{
+  display:inline-flex; gap:10px; align-items:center;
+  color:var(--accent); font-weight:800; letter-spacing:.5px;
+  text-transform:uppercase; font-size:12px;
+}
+.kickerDot{width:8px;height:8px;border-radius:999px;background:var(--highlight)}
+h1{margin:12px 0 10px; font-size:38px; line-height:1.15}
+.lead{margin:0; color:var(--muted); font-size:16px; max-width:58ch}
+
+.ctaRow{display:flex; gap:12px; margin-top:18px; flex-wrap:wrap}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:12px 16px; border-radius:14px; font-weight:800;
+  border:1px solid transparent;
+}
+.btn.primary{background:var(--primary); color:white}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn.ghost{border-color:var(--border); background:transparent}
+.btn.ghost:hover{background:rgba(11,31,59,.06)}
+
+.heroStats{
+  display:grid; gap:12px;
+  grid-template-columns: 1fr 1fr;
+  margin-top:18px;
+}
+.stat{
+  background:rgba(11,31,59,.04);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:14px;
+}
+.stat b{display:block; font-size:18px}
+.stat span{color:var(--muted); font-weight:600; font-size:12px}
+
+.sideImage{
+  background:
+    radial-gradient(1200px 400px at 20% 20%, rgba(43,108,176,.25), transparent 60%),
+    radial-gradient(900px 300px at 80% 30%, rgba(245,166,35,.22), transparent 60%),
+    linear-gradient(135deg, rgba(11,31,59,.88), rgba(43,108,176,.68));
+  border-radius:var(--radius);
+  border:1px solid var(--border);
+  box-shadow: var(--shadow);
+  padding:26px;
+  color:white;
+  display:flex; flex-direction:column; justify-content:space-between;
+  min-height:260px;
+}
+.sideImage h2{margin:0 0 8px;font-size:20px}
+.sideImage p{margin:0;color:rgba(255,255,255,.82)}
+.pillRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+.pill{
+  padding:8px 10px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:999px;
+  background: rgba(255,255,255,.10);
+  font-weight:700; font-size:12px;
+}
+
+.section{padding:26px 0}
+.sectionHeader{
+  display:flex; align-items:flex-end; justify-content:space-between; gap:16px;
+  margin-bottom:12px;
+}
+.sectionHeader h3{margin:0; font-size:20px}
+.sectionHeader p{margin:0; color:var(--muted); max-width:70ch}
+
+.grid{
+  display:grid; gap:14px;
+  grid-template-columns: repeat(3, 1fr);
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px;
+  box-shadow: 0 8px 22px rgba(11,31,59,.06);
+}
+.card h4{margin:0 0 8px}
+.card p{margin:0; color:var(--muted)}
+.tag{
+  display:inline-flex; gap:8px; align-items:center;
+  margin-top:10px;
+  font-size:12px; font-weight:800;
+  color:var(--accent);
+}
+
+.projects{
+  display:grid; gap:14px;
+  grid-template-columns: repeat(2, 1fr);
+}
+.project{
+  display:flex; gap:14px; align-items:flex-start;
+}
+.badge{
+  width:42px;height:42px;border-radius:14px;
+  background: rgba(43,108,176,.10);
+  border:1px solid var(--border);
+  display:flex; align-items:center; justify-content:center;
+  font-weight:900; color:var(--accent);
+}
+
+.commitGrid{
+  display:grid; gap:14px;
+  grid-template-columns: repeat(4, 1fr);
+}
+.commit{ text-align:center; padding:18px}
+.commit b{display:block; margin-top:10px}
+.commit span{display:block; color:var(--muted); font-size:12px; margin-top:6px}
+
+.footer{
+  padding:28px 0;
+  background:#0B1F3B;
+  border-top:1px solid rgba(255,255,255,0.15);
+}
+.footerGrid{
+  display:grid; gap:14px;
+  grid-template-columns: 1.4fr 1fr 1fr;
+}
+small{color:var(--muted)}
+hr.sep{border:0;border-top:1px solid var(--border); margin:18px 0}
+
+@media (max-width: 920px){
+  .heroGrid{grid-template-columns: 1fr}
+  .grid{grid-template-columns: 1fr}
+  .projects{grid-template-columns: 1fr}
+  .commitGrid{grid-template-columns: 1fr 1fr}
+}
+@media (max-width: 520px){
+  h1{font-size:30px}
+  .commitGrid{grid-template-columns: 1fr}
+}
+
+/* ===== HOME BLUE THEME FIXES ===== */
+
+/* Make top header bar light with black text */
+.topbar{
+  background: #E9EEF5 !important;
+  border-bottom: 1px solid rgba(11,31,59,.18) !important;
+}
+
+.brand div{
+  color: #0B1F3B !important;
+}
+
+.menu{
+  color:#0B1F3B !important;
+}
+.menu a:hover{
+  background: rgba(11,31,59,.06) !important;
+  color:#0B1F3B !important;
+}
+
+/* Make section headings readable on blue page bg */
+.sectionHeader h3{
+  color: #ffffff !important;
+}
+.sectionHeader p{
+  color: rgba(255,255,255,0.85) !important;
+}
+
+/* ===== FOOTER TEXT COLOR FIX ===== */
+
+.footer,
+.footer p,
+.footer b,
+.footer small,
+.footer span,
+.footer a {
+  color: #ffffff !important;
+}
+
+/* =========================
+   HERO STATS AS WHITE CARDS
+========================= */
+.heroCard .heroStats{
+  grid-template-columns: 1fr 1fr; /* keeps 2x2 */
+}
+
+.heroCard .stat{
+  background:#ffffff !important;            /* ✅ white card */
+  border:1px solid rgba(255,255,255,0.35); /* subtle border */
+  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+  border-radius:16px;
+  padding:14px;
+}
+
+.heroCard .stat b{
+  color:#0B1F3B !important;   /* ✅ dark title */
+  font-weight:900;
+  font-size:18px;
+}
+
+.heroCard .stat span{
+  color: rgba(11,31,59,0.75) !important; /* ✅ readable subtitle */
+  font-weight:700;
+  font-size:12px;
+}
+
+/* =========================
+   HEADER BRAND STYLING
+========================= */
+
+/* Remove hover / background effects on brand */
+.brandNoHover{
+  text-decoration: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  cursor: default;
+}
+.brandNoHover:hover,
+.brandNoHover:focus,
+.brandNoHover:active{
+  background: transparent !important;
+  outline: none !important;
+}
+
+/* Brand typography */
+.brandRow{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.brandIcon{
+  width:34px;   /* ✅ increased size */
+  height:34px;
+  color:#0B1F3B; /* black/navy */
+}
+
+.brandTitle{
+  font-size:28px;    /* ✅ stronger title */
+  font-weight:900;
+  letter-spacing:0.4px;
+  color:#0B1F3B;
+  line-height:1.05;
+}
+
+.brandTagline{
+  margin-top:6px;    /* ✅ reduced gap */
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:0.6px;
+  color:#0B1F3B;      /* ✅ black */
+  line-height:1.15;
+}
+
+/* ===== TOP BAR LIGHT GREEN ===== */
+.topbar{
+  background: #DFF2E1 !important; /* light green */
+  border-bottom: 1px solid rgba(11,31,59,.18) !important;
+}
+
+/* Reduce spacing between title and tagline */
+.brandTagline{
+  margin-top:4px !important;
+}
+
+/* ===== COMMITMENT ICON TILES ===== */
+.commitIconBox{
+  width:56px;
+  height:56px;
+  border-radius:16px;
+  background:#ffffff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 10px;
+  box-shadow: 0 10px 22px rgba(0,0,0,0.18);
+  border:1px solid rgba(11,31,59,0.10);
+}
+.commitIconBox svg{
+  width:30px;
+  height:30px;
+  color:#0B1F3B; /* navy icon */
+}
+
+/* ===== RIGHT PANEL IMAGE GRID ===== */
+.sectorGrid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:12px;
+  margin:16px 0 14px;
+}
+
+.sectorItem{
+  position:relative;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.22);
+  background: rgba(255,255,255,0.06);
+}
+
+.sectorItem img{
+  width:100%;
+  height:95px;
+  object-fit:cover;
+  display:block;
+  filter: contrast(1.05) saturate(1.05);
+}
+
+.sectorItem span{
+  position:absolute;
+  left:10px;
+  bottom:8px;
+  padding:6px 10px;
+  border-radius:999px;
+  background: rgba(11,31,59,0.78);
+  color:#fff;
+  font-weight:800;
+  font-size:12px;
+  letter-spacing:0.2px;
+  border:1px solid rgba(255,255,255,0.18);
+}
+
+
+
