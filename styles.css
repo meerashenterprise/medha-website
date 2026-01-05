@@ -451,6 +451,69 @@ html, body { overflow-x: hidden; }
   }
 }
 
+/* =========================
+   HEADER FIX (MOBILE WRAP)
+========================= */
+
+* { box-sizing: border-box; }
+html, body { width: 100%; overflow-x: hidden; }
+
+.topbar .container.nav{
+  width: 100%;
+  max-width: 1200px;      /* keep desktop nice */
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* Make header content wrap instead of cutting */
+.headerFlex{
+  display: flex;
+  flex-wrap: wrap;        /* ✅ KEY FIX */
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Brand should not shrink */
+.brandWrapper{
+  flex: 1 1 260px;        /* allows wrap */
+  min-width: 240px;
+}
+
+/* Menu should wrap properly */
+.menu{
+  flex: 1 1 260px;        /* allows wrap */
+  display: flex;
+  flex-wrap: wrap;        /* ✅ KEY FIX */
+  justify-content: flex-end;
+  gap: 10px;
+  min-width: 240px;
+}
+
+/* Menu links should not look cut */
+.menu a{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+
+/* MOBILE: stack brand + menu neatly */
+@media (max-width: 640px){
+  .headerFlex{
+    flex-direction: column;
+    align-items: stretch;     /* full width */
+  }
+
+  .menu{
+    justify-content: flex-start;
+  }
+}
+
+
 
 
 
