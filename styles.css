@@ -556,6 +556,62 @@ html, body { width: 100%; overflow-x: hidden; }
   }
 }
 
+/* =========================
+   PREMIUM MOBILE HEADER POLISH
+========================= */
+
+@media (max-width: 640px){
+
+  /* Header background stays clean */
+  .topbar{
+    padding: 14px 0 10px 0 !important;
+    border-bottom: 1px solid rgba(0,0,0,0.08); /* subtle divider */
+  }
+
+  /* Stack content naturally */
+  .headerFlex{
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 6px !important; /* tighter */
+  }
+
+  /* Brand row (icon + name) */
+  .brandRow{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Medha title */
+  .brandTitle{
+    font-size: 20px !important;
+    font-weight: 800 !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Tagline under title */
+  .brandTagline{
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    margin-top: 2px !important;
+    line-height: 1.3 !important;
+    opacity: 0.9;
+  }
+
+  /* Navigation menu */
+  .menu{
+    margin-top: 8px !important;
+    padding-top: 6px !important;
+    border-top: 1px dashed rgba(0,0,0,0.12); /* elegant divider */
+  }
+
+  .menu a{
+    font-size: 14px !important;
+    font-weight: 600 !important;
+  }
+}
+
+
 
 
 
