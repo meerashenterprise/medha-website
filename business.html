@@ -3,94 +3,139 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Business Lines | Medhaan Group</title>
+  <title>Business Lines | Medhaan</title>
   <link rel="stylesheet" href="styles.css"/>
 </head>
-<body>
+
+<body style="background:#0B1F3B;">
+
+  <!-- ===== Top Bar (same as index) ===== -->
   <header class="topbar">
-    <div class="container nav">
-      <a class="brand" href="index.html">
-        <div class="logo" aria-hidden="true"></div>
-        <div>Medhaan Group</div>
+    <div class="container nav headerFlex">
+
+      <!-- Brand -->
+      <a class="brandLink" href="index.html" aria-label="Medhaan Home">
+        <img class="brandLogo" src="medhaan-logo.jpg" alt="Medhaan logo"/>
+        <div class="brandText">
+          <div class="brandTitle">Medhaan</div>
+          <div class="brandTagline">Building Infrastructure. Powering Progress.</div>
+        </div>
       </a>
-      <nav class="menu" aria-label="Primary">
+
+      <!-- Mobile menu button -->
+      <button class="navToggle" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu()">
+        ☰
+      </button>
+
+      <!-- Navigation -->
+      <nav class="menu" id="mainMenu" aria-label="Primary">
         <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
         <a href="business.html">Business Lines</a>
         <a href="contact.html">Contact</a>
       </nav>
+
     </div>
   </header>
 
   <main class="section">
     <div class="container">
-      <div class="heroCard">
+
+      <!-- Top intro card -->
+      <div class="heroCard" style="background:#0E2A52; color:white;">
         <div class="kicker"><span class="kickerDot"></span> Business lines</div>
-        <h1 style="margin-top:10px">Focused verticals. One governance standard.</h1>
-        <p class="lead">Each vertical can be run as a business unit or project-specific SPV—ideal for partnerships and ring-fenced delivery.</p>
+        <h1 style="margin-top:10px; color:white;">Focused verticals. One governance standard.</h1>
+        <p class="lead" style="color:rgba(255,255,255,0.85); max-width:none;">
+          Each vertical can be run as a business unit or project-specific SPV—ideal for partnerships and ring-fenced delivery.
+        </p>
       </div>
 
+      <!-- Business grid -->
       <div class="section" style="padding-top:18px">
         <div class="grid">
+
           <div class="card">
-            <h4>Infrastructure & EPC</h4>
-            <p><b>Capabilities:</b> civil, underground utilities, execution management, vendor control.</p>
-            <p style="margin-top:10px"><b>What you can add:</b> certifications, equipment list, key leadership.</p>
+            <h4>Infrastructure &amp; EPC</h4>
+            <p><b>Capabilities:</b> civil works, underground utilities, execution management, vendor control.</p>
+            <p style="margin-top:10px"><b>What to add:</b> certifications, equipment list, leadership profiles.</p>
             <div class="tag">Best for: Government/PSU + large private projects</div>
           </div>
 
           <div class="card">
-            <h4>Power & Renewables</h4>
-            <p><b>Capabilities:</b> project support, compliance-led contracting, BOP coordination, O&amp;M support.</p>
-            <p style="margin-top:10px"><b>What you can add:</b> typical project sizes, states, delivery model.</p>
-            <div class="tag">Best for: C&amp;I, captive, hybrid projects</div>
-          </div>
-
-          <div class="card">
-            <h4>Telecom & OFC</h4>
+            <h4>Telecom &amp; OFC</h4>
             <p><b>Capabilities:</b> trenching/ducting, cable laying, restoration, documentation.</p>
-            <p style="margin-top:10px"><b>What you can add:</b> rollout speed, QA/QC process, safety program.</p>
+            <p style="margin-top:10px"><b>What to add:</b> rollout speed, QA/QC process, safety program.</p>
             <div class="tag">Best for: EPC partners + operators</div>
           </div>
 
           <div class="card">
             <h4>IT Services</h4>
             <p><b>Capabilities:</b> internal tooling, managed services, analytics enablement.</p>
-            <p style="margin-top:10px"><b>What you can add:</b> tech stack, sample use-cases, delivery approach.</p>
-            <div class="tag">Best for: enterprises + SMEs</div>
+            <p style="margin-top:10px"><b>What to add:</b> tech stack, sample use-cases, delivery approach.</p>
+            <div class="tag">Best for: Enterprises + SMEs</div>
           </div>
 
           <div class="card">
-            <h4>Manufacturing & Supply</h4>
-            <p><b>Capabilities:</b> sourcing, QA, vendor development, subsidiary-led scaling.</p>
-            <p style="margin-top:10px"><b>What you can add:</b> product categories, capacity, compliance.</p>
-            <div class="tag">Best for: OEM alignment + EPC supply</div>
-          </div>
-
-          <div class="card">
-            <h4>Water & Utilities</h4>
+            <h4>Water &amp; Utilities</h4>
             <p><b>Capabilities:</b> utility execution support, O&amp;M processes, public infra coordination.</p>
-            <p style="margin-top:10px"><b>What you can add:</b> EHS and stakeholder approach.</p>
+            <p style="margin-top:10px"><b>What to add:</b> EHS program and stakeholder approach.</p>
             <div class="tag">Best for: ULBs + state bodies</div>
           </div>
+
         </div>
       </div>
 
-      <div class="heroCard">
-        <h3 style="margin:0 0 8px">Subsidiaries / SPVs (optional strip)</h3>
-        <p class="lead" style="max-width:none">
-          Add logos/names of subsidiaries (or “coming soon”). This mirrors how large groups show group companies for credibility.
+      <!-- Optional strip -->
+      <div class="heroCard" style="background:#0E2A52; color:white;">
+        <h3 style="margin:0 0 8px; color:white;">Subsidiaries / SPVs (optional)</h3>
+        <p class="lead" style="max-width:none; color:rgba(255,255,255,0.85);">
+          Add names/logos of subsidiaries (or “coming soon”). This mirrors how large groups show group companies for credibility.
         </p>
       </div>
+
     </div>
   </main>
 
+  <!-- Footer (same feel as index) -->
   <footer class="footer">
-    <div class="container">
-      <small>© <span id="year"></span> Medhaan</small>
+    <div class="container footerGrid">
+      <div>
+        <b>Medhaan Pvt Limited</b>
+        <p style="margin:8px 0 0">Holding company for multi-sector delivery and partnerships.</p>
+        <small>© <span id="year"></span> Medhaan Pvt Limited. All rights reserved.</small>
+      </div>
+
+      <div>
+        <b>Quick Links</b>
+        <div style="display:grid;gap:8px;margin-top:10px">
+          <a href="about.html">About Us</a>
+          <a href="business.html">Business Lines</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <b>Contact</b>
+        <div style="display:grid;gap:8px;margin-top:10px">
+          <span>Email: contact@medhaan.in</span>
+          <span>Phone: 9560043428</span>
+          <span>India</span>
+        </div>
+      </div>
     </div>
   </footer>
 
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function toggleMenu(){
+      const menu = document.getElementById('mainMenu');
+      menu.classList.toggle('open');
+
+      const btn = document.querySelector('.navToggle');
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+    }
+  </script>
 </body>
 </html>
-
