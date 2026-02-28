@@ -9,31 +9,28 @@
 
 <body style="background:#0B1F3B;">
 
+  <!-- ===== Top Bar (Classy + Mobile-friendly) ===== -->
   <header class="topbar">
     <div class="container nav headerFlex">
 
-      <!-- BRAND BLOCK (LEFT) -->
-      <div class="brandWrapper">
-        <div class="brandRow">
-          <!-- Infrastructure icon -->
-          <svg class="brandIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M3 20h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <path d="M6 20V9l6-5 6 5v11" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-            <path d="M9 20v-6h6v6" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          </svg>
-
+      <!-- Brand -->
+      <a class="brandLink" href="index.html" aria-label="Medhaan Home">
+        <img class="brandLogo" src="images/medhaan-logo.png" alt="Medhaan logo"/>
+        <div class="brandText">
           <div class="brandTitle">Medhaan</div>
+          <div class="brandTagline">Building Infrastructure. Powering Progress.</div>
         </div>
+      </a>
 
-        <!-- TAGLINE DIRECTLY UNDER TITLE -->
-        <div class="brandTagline">
-          Building Infrastructure. Powering Progress.
-        </div>
-      </div>
+      <!-- Mobile menu button -->
+      <button class="navToggle" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu()">
+        ☰
+      </button>
 
-      <!-- NAVIGATION (RIGHT) -->
-      <nav class="menu" aria-label="Primary">
+      <!-- Navigation -->
+      <nav class="menu" id="mainMenu" aria-label="Primary">
         <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
         <a href="business.html">Business Lines</a>
         <a href="contact.html">Contact</a>
       </nav>
@@ -46,7 +43,6 @@
       <div class="container heroGrid">
 
         <div class="heroCard" style="background:#0E2A52; color:white;">
-
           <h1 style="color:white;">
             Building businesses across infrastructure, technology, and services.
           </h1>
@@ -72,45 +68,35 @@
         <!-- RIGHT SECTION (LOCAL IMAGES) -->
         <aside class="sideImage">
           <div>
-            <h2>Touching lives through engineering & services</h2>
+            <h2>Touching lives through engineering &amp; services</h2>
             <p>From projects to platforms—built with quality, safety, and accountability.</p>
 
-            <!-- ✅ Local image grid (MD/images) -->
             <div class="sectorGrid" aria-label="Sector snapshots">
-
               <div class="sectorItem">
                 <img src="infra.jpg" alt="Infrastructure"/>
                 <span>Infrastructure</span>
               </div>
-
               <div class="sectorItem">
                 <img src="telecom.jpg" alt="Telecom and OFC"/>
                 <span>Telecom &amp; OFC</span>
               </div>
-
               <div class="sectorItem">
                 <img src="it.jpg" alt="IT Services"/>
                 <span>IT Services</span>
               </div>
-
               <div class="sectorItem">
                 <img src="water.jpg" alt="Water and Utilities"/>
                 <span>Water &amp; Utilities</span>
               </div>
-
             </div>
 
-            <!-- Pills stay below (removed Power & Renewables + Manufacturing) -->
             <div class="pillRow" aria-label="Example sectors">
               <span class="pill">Infrastructure</span>
               <span class="pill">Telecom &amp; OFC</span>
               <span class="pill">IT Services</span>
               <span class="pill">Water &amp; Utilities</span>
             </div>
-
           </div>
-
-          
         </aside>
 
       </div>
@@ -118,7 +104,6 @@
 
     <section class="section" id="verticals">
       <div class="container">
-
         <div class="sectionHeader" style="color:white;">
           <div>
             <h3 style="color:white;">Our Business Lines</h3>
@@ -131,15 +116,13 @@
 
         <div class="grid">
           <div class="card">
-            <h4>Infrastructure & EPC</h4>
+            <h4>Infrastructure &amp; EPC</h4>
             <p>Civil works, underground utilities, and end-to-end project delivery.</p>
             <div class="tag">Typical: PSUs • State agencies • Private developers</div>
           </div>
 
-          <!-- ✅ Removed Power & Renewables -->
-
           <div class="card">
-            <h4>Telecom & OFC</h4>
+            <h4>Telecom &amp; OFC</h4>
             <p>OFC rollout, ducting, trenching, restoration, last-mile execution.</p>
             <div class="tag">Typical: EPCs • Network operators</div>
           </div>
@@ -150,26 +133,22 @@
             <div class="tag">Typical: Enterprises • SMEs</div>
           </div>
 
-          <!-- ✅ Removed Manufacturing & Supply -->
-
           <div class="card">
-            <h4>Water & Utilities</h4>
+            <h4>Water &amp; Utilities</h4>
             <p>Utility execution and O&amp;M support for critical public infrastructure.</p>
             <div class="tag">Typical: ULBs • Govt bodies</div>
           </div>
         </div>
-
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-
         <div class="sectionHeader" style="color:white;">
           <div>
             <h3 style="color:white;">Selected Highlights</h3>
             <p style="color:rgba(255,255,255,0.85);">
-              Showcase a few representative project categories (you can replace with actual projects later).
+              Showcase a few representative project categories (replace with actual projects later).
             </p>
           </div>
         </div>
@@ -185,7 +164,7 @@
           <div class="card project">
             <div class="badge">02</div>
             <div>
-              <h4>JV / SPV project structuring</h4>
+              <h4>JV / SPV structuring</h4>
               <p>Ring-fenced SPVs, partner onboarding, compliant contracting and reporting.</p>
             </div>
           </div>
@@ -207,71 +186,33 @@
 
         <hr class="sep"/>
 
+        <!-- ===== Commitment (short + pointer-only) ===== -->
         <div class="sectionHeader" style="color:white;">
           <div>
             <h3 style="color:white;">Our Commitment</h3>
             <p style="color:rgba(255,255,255,0.85);">
-              Clear principles that clients and partners can rely on—built on safety, quality, accountability, and sustainability.
+              Clear principles clients and partners can rely on.
             </p>
           </div>
         </div>
 
-        <div class="commitGrid">
-
-          <div class="card commit">
-            <div class="commitIconBox" aria-hidden="true">
-              <!-- Safety icon -->
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M12 2l8 4v6c0 5-3.5 9.5-8 10-4.5-.5-8-5-8-10V6l8-4z"
-                      stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M12 7v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path d="M12 16h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <b>Safety</b>
-            <span>Non-negotiable site and process discipline.</span>
+        <div class="commitList">
+          <div class="commitPoint">
+            <span class="commitBullet">✓</span>
+            <div><b>Safety-first delivery</b><span>Disciplined execution and zero-compromise safety.</span></div>
           </div>
-
-          <div class="card commit">
-            <div class="commitIconBox" aria-hidden="true">
-              <!-- Quality icon -->
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M20 6l-11 11-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M12 2l7 4v7c0 4-3 8-7 9-4-1-7-5-7-9V6l7-4z"
-                      stroke="currentColor" stroke-width="2" stroke-linejoin="round" opacity="0.75"/>
-              </svg>
-            </div>
-            <b>Quality</b>
-            <span>Documentation-led, auditable delivery.</span>
+          <div class="commitPoint">
+            <span class="commitBullet">✓</span>
+            <div><b>Quality &amp; documentation</b><span>Auditable records, defined standards, clean handovers.</span></div>
           </div>
-
-          <div class="card commit">
-            <div class="commitIconBox" aria-hidden="true">
-              <!-- Accountability icon -->
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" stroke="currentColor" stroke-width="2"/>
-                <path d="M17 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" stroke="currentColor" stroke-width="2" opacity="0.75"/>
-                <path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path d="M15 20c0-2.6 1.6-4.8 4-5.7" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.75"/>
-              </svg>
-            </div>
-            <b>Accountability</b>
-            <span>Clear ownership and escalation paths.</span>
+          <div class="commitPoint">
+            <span class="commitBullet">✓</span>
+            <div><b>Accountability</b><span>Clear ownership, escalation paths, and governance.</span></div>
           </div>
-
-          <div class="card commit">
-            <div class="commitIconBox" aria-hidden="true">
-              <!-- Sustainability icon -->
-              <svg viewBox="0 0 24 24" fill="none">
-                <path d="M20 4s-8 1-12 6-4 12-4 12 7 0 12-4 6-12 6-14z"
-                      stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                <path d="M9 15c2-2 5-5 11-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <b>Sustainability</b>
-            <span>Responsible execution and long-term value.</span>
+          <div class="commitPoint">
+            <span class="commitBullet">✓</span>
+            <div><b>Sustainability</b><span>Responsible, long-term value creation in every project.</span></div>
           </div>
-
         </div>
 
       </div>
@@ -288,6 +229,7 @@
       <div>
         <b>Quick Links</b>
         <div style="display:grid;gap:8px;margin-top:10px">
+          <a href="about.html">About Us</a>
           <a href="business.html">Business Lines</a>
           <a href="contact.html">Contact</a>
         </div>
@@ -303,11 +245,17 @@
     </div>
   </footer>
 
-  <script src="app.js"></script>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function toggleMenu(){
+      const menu = document.getElementById('mainMenu');
+      menu.classList.toggle('open');
+
+      const btn = document.querySelector('.navToggle');
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+    }
+  </script>
 </body>
 </html>
-
-
-
-
