@@ -3,65 +3,90 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Contact | Medhaan Group</title>
+  <title>Contact | Medhaan</title>
   <link rel="stylesheet" href="styles.css"/>
 </head>
-<body>
+
+<body style="background:#0B1F3B;">
+
+  <!-- ===== Top Bar ===== -->
   <header class="topbar">
-    <div class="container nav">
-      <a class="brand" href="index.html">
-        <div class="logo" aria-hidden="true"></div>
-        <div>Medhaan Group</div>
+    <div class="container nav headerFlex">
+
+      <a class="brandLink" href="index.html" aria-label="Medhaan Home">
+        <img class="brandLogo" src="medhaan-logo.jpg" alt="Medhaan logo"/>
+        <div class="brandText">
+          <div class="brandTitle">Medhaan</div>
+          <div class="brandTagline">Building Infrastructure. Powering Progress.</div>
+        </div>
       </a>
-      <nav class="menu" aria-label="Primary">
+
+      <button class="navToggle" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu()">☰</button>
+
+      <nav class="menu" id="mainMenu" aria-label="Primary">
         <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
         <a href="business.html">Business Lines</a>
         <a href="contact.html">Contact</a>
       </nav>
+
     </div>
   </header>
 
   <main class="section">
     <div class="container">
-      <div class="heroCard">
+
+      <!-- Top intro -->
+      <div class="heroCard" style="background:#0E2A52; color:white;">
         <div class="kicker"><span class="kickerDot"></span> Contact</div>
-        <h1 style="margin-top:10px">Let’s discuss a project or partnership.</h1>
-        <p class="lead">Share your requirement and preferred vertical—we’ll respond with the right team.</p>
+        <h1 style="margin-top:10px; color:white;">Let’s discuss a project or partnership.</h1>
+        <p class="lead" style="color:rgba(255,255,255,0.85);">
+          Share your requirement and preferred vertical—we’ll respond with the right team.
+        </p>
       </div>
 
+      <!-- Contact cards -->
       <div class="section" style="padding-top:18px">
         <div class="grid">
+
           <div class="card">
             <h4>Corporate Office</h4>
-            <p>India (add full address)</p>
+            <p>India (add full address here)</p>
             <div class="tag">Working hours: Mon–Sat</div>
           </div>
+
           <div class="card">
             <h4>Email</h4>
             <p>contact@medhaan.in</p>
             <div class="tag">Partnerships • Projects • Vendor onboarding</div>
           </div>
+
           <div class="card">
             <h4>Phone</h4>
             <p>+91-9560043428</p>
-            <div class="tag">Prefer WhatsApp? add number</div>
+            <p style="margin-top:6px;">+91-9217517076</p>
+            <div class="tag">Call / WhatsApp</div>
           </div>
+
         </div>
       </div>
 
+      <!-- Inquiry form -->
       <div class="section" style="padding-top:0">
         <div class="card">
-          <h3 style="margin-top:0">Inquiry form (front-end demo)</h3>
+          <h3 style="margin-top:0">Inquiry Form</h3>
+
           <form onsubmit="event.preventDefault(); alert('Thanks! Form demo only—connect to email/CRM later.');">
+
             <div class="grid" style="grid-template-columns:1fr 1fr">
               <div>
                 <label><b>Name</b><br/>
-                  <input required style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);margin-top:6px" />
+                  <input required style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);margin-top:6px"/>
                 </label>
               </div>
               <div>
                 <label><b>Company</b><br/>
-                  <input style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);margin-top:6px" />
+                  <input style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);margin-top:6px"/>
                 </label>
               </div>
             </div>
@@ -70,10 +95,8 @@
               <label><b>Vertical</b><br/>
                 <select style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--border);margin-top:6px">
                   <option>Infrastructure & EPC</option>
-                  <option>Power & Renewables</option>
                   <option>Telecom & OFC</option>
                   <option>IT Services</option>
-                  <option>Manufacturing & Supply</option>
                   <option>Water & Utilities</option>
                 </select>
               </label>
@@ -86,25 +109,61 @@
             </div>
 
             <div class="ctaRow">
-              <button class="btn primary" type="submit">Send inquiry</button>
-              <a class="btn ghost" href="business.html">Review business lines</a>
+              <button class="btn primary" type="submit">Send Inquiry</button>
+              <a class="btn ghost" href="business.html">Review Business Lines</a>
             </div>
+
           </form>
 
           <hr class="sep"/>
-          <small>Next step: connect this form to email (SMTP), Google Forms, Zoho, HubSpot, or a simple server endpoint.</small>
+          <small>Next step: connect this form to Titan email, Zoho, HubSpot, or backend endpoint.</small>
         </div>
       </div>
+
     </div>
   </main>
 
+  <!-- Footer -->
   <footer class="footer">
-    <div class="container">
-      <small>© <span id="year"></span> Medhaan Pvt Limited.</small>
+    <div class="container footerGrid">
+      <div>
+        <b>Medhaan Pvt Limited</b>
+        <p style="margin:8px 0 0">Holding company for multi-sector delivery and partnerships.</p>
+        <small>© <span id="year"></span> Medhaan Pvt Limited. All rights reserved.</small>
+      </div>
+
+      <div>
+        <b>Quick Links</b>
+        <div style="display:grid;gap:8px;margin-top:10px">
+          <a href="about.html">About Us</a>
+          <a href="business.html">Business Lines</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <b>Contact</b>
+        <div style="display:grid;gap:8px;margin-top:10px">
+          <span>Email: contact@medhaan.in</span>
+          <span>Phone: 9560043428</span>
+          <span>Phone: 9217517076</span>
+        </div>
+      </div>
     </div>
   </footer>
 
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function toggleMenu(){
+      const menu = document.getElementById('mainMenu');
+      menu.classList.toggle('open');
+
+      const btn = document.querySelector('.navToggle');
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+    }
+  </script>
+
 </body>
 </html>
-
