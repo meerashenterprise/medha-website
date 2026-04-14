@@ -3,219 +3,210 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Medhaan | Multi-Sector Holding Company</title>
+  <title>Medhaan | Engineering & Infrastructure</title>
   <link rel="stylesheet" href="styles.css"/>
 </head>
 
 <body style="background:#0B1F3B;">
 
-  <!-- ===== Top Bar (Classy + Mobile-friendly) ===== -->
-  <header class="topbar">
-    <div class="container nav headerFlex">
+<!-- ===== HEADER ===== -->
+<header class="topbar">
+  <div class="container nav headerFlex">
 
-      <!-- Brand -->
-      <a class="brandLink" href="index.html" aria-label="Medhaan Home">
-        <img class="brandLogo" src="medhaan-logo.jpg" alt="Medhaan logo"/>
-        <div class="brandText">
-          <div class="brandTitle">Medhaan</div>
-          <div class="brandTagline">Building Infrastructure. Powering Progress.</div>
-        </div>
-      </a>
+    <a class="brandLink" href="index.html">
+      <img class="brandLogo" src="medhaan-logo.jpg"/>
+      <div class="brandText">
+        <div class="brandTitle">Medhaan</div>
+        <div class="brandTagline">Building Infrastructure. Powering Progress.</div>
+      </div>
+    </a>
 
-      <!-- Mobile menu button -->
-      <button class="navToggle" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu()">
-        ☰
-      </button>
+    <button class="navToggle" onclick="toggleMenu()">☰</button>
 
-      <!-- Navigation -->
-      <nav class="menu" id="mainMenu" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="business.html">Business Lines</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+    <nav class="menu" id="mainMenu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="business.html">Business</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+  </div>
+</header>
+
+<!-- ===== HERO SLIDER ===== -->
+<section class="heroSlider">
+
+  <div class="slide active">
+    <img src="infra.jpg"/>
+    <div class="overlay">
+      <h1>Engineering Infrastructure at Scale</h1>
+      <p>Execution excellence across sectors</p>
+    </div>
+  </div>
+
+  <div class="slide">
+    <img src="telecom.jpg"/>
+    <div class="overlay">
+      <h1>Telecom & OFC Deployment</h1>
+      <p>Speed. Quality. Compliance.</p>
+    </div>
+  </div>
+
+  <div class="slide">
+    <img src="it.jpg"/>
+    <div class="overlay">
+      <h1>Technology Driven Operations</h1>
+      <p>Data-led decision making</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- ===== ABOUT SNAPSHOT ===== -->
+<section class="section">
+  <div class="container">
+
+    <div class="aboutBox">
+      <h2>About Medhaan</h2>
+      <p>
+        Medhaan is a multi-sector engineering and execution platform delivering infrastructure,
+        telecom, IT, and utility projects through structured verticals and partnerships.
+      </p>
+      <a href="about.html" class="btn primary">Read More</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== CAPABILITIES ===== -->
+<section class="section">
+  <div class="container">
+
+    <div class="sectionHeader">
+      <h3 style="color:white;">Core Capabilities</h3>
+    </div>
+
+    <div class="capGrid">
+
+      <div class="capCard">
+        <h4>Infrastructure & EPC</h4>
+        <p>Civil works, utilities, end-to-end execution</p>
+      </div>
+
+      <div class="capCard">
+        <h4>Telecom & OFC</h4>
+        <p>Trenching, ducting, fiber rollout</p>
+      </div>
+
+      <div class="capCard">
+        <h4>IT Services</h4>
+        <p>Systems, analytics, automation</p>
+      </div>
+
+      <div class="capCard">
+        <h4>Water & Utilities</h4>
+        <p>Public infrastructure support</p>
+      </div>
 
     </div>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="container heroGrid">
+  </div>
+</section>
 
-        <div class="heroCard" style="background:#0E2A52; color:white;">
-          <h1 style="color:white;">
-            Building businesses across infrastructure, technology, and services.
-          </h1>
+<!-- ===== PROJECTS ===== -->
+<section class="section">
+  <div class="container">
 
-          <p class="lead" style="color:rgba(255,255,255,0.85);">
-            Medhaan is designed to operate multiple service lines under one governance umbrella—
-            enabling partnerships, project SPVs, and scalable execution across sectors.
-          </p>
-
-          <div class="ctaRow">
-            <a class="btn primary" href="business.html">Explore Business Lines</a>
-            <a class="btn ghost" href="contact.html">Partner With Us</a>
-          </div>
-
-          <div class="heroStats" aria-label="Highlights">
-            <div class="stat"><b>Multi-sector</b><span>Structured verticals + SPVs</span></div>
-            <div class="stat"><b>Partner-ready</b><span>JV & project onboarding</span></div>
-            <div class="stat"><b>Governance-first</b><span>Risk & compliance focus</span></div>
-            <div class="stat"><b>Execution-led</b><span>Delivery via group entities</span></div>
-          </div>
-        </div>
-
-        <!-- RIGHT SECTION (LOCAL IMAGES) -->
-        <aside class="sideImage">
-          <div>
-            <h2>Touching lives through engineering &amp; services</h2>
-            <p>From projects to platforms—built with quality, safety, and accountability.</p>
-
-            <div class="sectorGrid" aria-label="Sector snapshots">
-              <div class="sectorItem">
-                <img src="infra.jpg" alt="Infrastructure"/>
-                <span>Infrastructure</span>
-              </div>
-              <div class="sectorItem">
-                <img src="telecom.jpg" alt="Telecom and OFC"/>
-                <span>Telecom &amp; OFC</span>
-              </div>
-              <div class="sectorItem">
-                <img src="it.jpg" alt="IT Services"/>
-                <span>IT Services</span>
-              </div>
-              <div class="sectorItem">
-                <img src="water.jpg" alt="Water and Utilities"/>
-                <span>Water &amp; Utilities</span>
-              </div>
-            </div>
-
-            <div class="pillRow" aria-label="Example sectors">
-              <span class="pill">Infrastructure</span>
-              <span class="pill">Telecom &amp; OFC</span>
-              <span class="pill">IT Services</span>
-              <span class="pill">Water &amp; Utilities</span>
-            </div>
-          </div>
-        </aside>
-
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="sectionHeader" style="color:white;">
-          <div>
-            <h3 style="color:white;">Selected Highlights</h3>
-            <p style="color:rgba(255,255,255,0.85);">
-              Showcase a few representative project categories (replace with actual projects later).
-            </p>
-          </div>
-        </div>
-
-        <div class="projects">
-          <div class="card project">
-            <div class="badge">01</div>
-            <div>
-              <h4>Large-scale EPC delivery</h4>
-              <p>Planning → execution → testing → handover with documentation and governance.</p>
-            </div>
-          </div>
-          <div class="card project">
-            <div class="badge">02</div>
-            <div>
-              <h4>JV / SPV structuring</h4>
-              <p>Ring-fenced SPVs, partner onboarding, compliant contracting and reporting.</p>
-            </div>
-          </div>
-          <div class="card project">
-            <div class="badge">03</div>
-            <div>
-              <h4>Multi-state execution support</h4>
-              <p>Vendor management, local compliance coordination, and milestone tracking.</p>
-            </div>
-          </div>
-          <div class="card project">
-            <div class="badge">04</div>
-            <div>
-              <h4>Technology-enabled operations</h4>
-              <p>Analytics and systems that improve turnaround times and decision-making.</p>
-            </div>
-          </div>
-        </div>
-
-        <hr class="sep"/>
-
-        <!-- ===== Commitment (short + pointer-only) ===== -->
-        <div class="sectionHeader" style="color:white;">
-          <div>
-            <h3 style="color:white;">Our Commitment</h3>
-            <p style="color:rgba(255,255,255,0.85);">
-              Clear principles clients and partners can rely on.
-            </p>
-          </div>
-        </div>
-
-        <div class="commitList">
-          <div class="commitPoint">
-            <span class="commitBullet">✓</span>
-            <div><b>Safety-first delivery</b><span>Disciplined execution and zero-compromise safety.</span></div>
-          </div>
-          <div class="commitPoint">
-            <span class="commitBullet">✓</span>
-            <div><b>Quality &amp; documentation</b><span>Auditable records, defined standards, clean handovers.</span></div>
-          </div>
-          <div class="commitPoint">
-            <span class="commitBullet">✓</span>
-            <div><b>Accountability</b><span>Clear ownership, escalation paths, and governance.</span></div>
-          </div>
-          <div class="commitPoint">
-            <span class="commitBullet">✓</span>
-            <div><b>Sustainability</b><span>Responsible, long-term value creation in every project.</span></div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container footerGrid">
-      <div>
-        <b>Medhaan Pvt Limited</b>
-        <p style="margin:8px 0 0">Holding company for multi-sector delivery and partnerships.</p>
-        <small>© <span id="year"></span> Medhaan Pvt Limited. All rights reserved.</small>
-      </div>
-      <div>
-        <b>Quick Links</b>
-        <div style="display:grid;gap:8px;margin-top:10px">
-          <a href="about.html">About Us</a>
-          <a href="business.html">Business Lines</a>
-          <a href="contact.html">Contact</a>
-        </div>
-      </div>
-      <div>
-        <b>Contact</b>
-        <div style="display:grid;gap:8px;margin-top:10px">
-          <span>Email: contact@medhaan.in</span>
-          <span>Phone: 9560043428</span>
-          <span>India</span>
-        </div>
-      </div>
+    <div class="sectionHeader">
+      <h3 style="color:white;">Ongoing Projects</h3>
     </div>
-  </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    <div class="grid">
 
-    function toggleMenu(){
-      const menu = document.getElementById('mainMenu');
-      menu.classList.toggle('open');
+      <div class="card">
+        <h4>OFC Rollout – Punjab</h4>
+        <p>Client: XXXXX</p>
+        <p>Scope: Trenching, laying</p>
+        <div class="tag">Ongoing</div>
+      </div>
 
-      const btn = document.querySelector('.navToggle');
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!expanded));
-    }
-  </script>
+      <div class="card">
+        <h4>Infra EPC – Haryana</h4>
+        <p>Client: XXXXX</p>
+        <p>Scope: Civil + Utilities</p>
+        <div class="tag">Ongoing</div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:16px">
+      <a href="projects.html" class="btn primary">View All Projects</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== WHY MEDHAAN ===== -->
+<section class="section">
+  <div class="container">
+
+    <div class="sectionHeader">
+      <h3 style="color:white;">Why Medhaan</h3>
+    </div>
+
+    <div class="commitList">
+
+      <div class="commitPoint"><span>✓</span> Safety-first execution</div>
+      <div class="commitPoint"><span>✓</span> Quality & documentation</div>
+      <div class="commitPoint"><span>✓</span> Strong governance</div>
+      <div class="commitPoint"><span>✓</span> Scalable delivery model</div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="section">
+  <div class="container">
+
+    <div class="ctaBox">
+      <h2>Let’s Build Together</h2>
+      <a href="contact.html" class="btn primary">Contact Us</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container footerGrid">
+    <div>
+      <b>Medhaan Pvt Limited</b>
+      <p>Engineering & Infrastructure Platform</p>
+    </div>
+
+    <div>
+      <b>Contact</b>
+      <p>contact@medhaan.in</p>
+      <p>9560043428 / 9217517076</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+let slides = document.querySelectorAll('.slide');
+let index = 0;
+setInterval(()=>{
+  slides[index].classList.remove('active');
+  index = (index+1)%slides.length;
+  slides[index].classList.add('active');
+},4000);
+
+function toggleMenu(){
+  document.getElementById('mainMenu').classList.toggle('open');
+}
+</script>
+
 </body>
 </html>
