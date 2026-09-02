@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Medhaan | Building Infrastructure. Powering Progress.</title>
+<meta name="description" content="Medhaan is a multi-sector holding company delivering across Infrastructure & EPC, Telecom & OFC, IT Services and Water & Utilities — governance-first, execution-led.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#141a1f;--ink-soft:#4a5560;--paper:#f4f1ea;--paper-deep:#ebe6da;
+  --forest:#13312a;--forest-700:#1c463b;--forest-600:#265646;
+  --clay:#c65b2e;--clay-soft:#e08a5f;--brass:#c9a24b;
+  --line:rgba(20,26,31,.14);--line-light:rgba(255,255,255,.16);
+  --serif:'Fraunces',Georgia,serif;--sans:'Inter',system-ui,sans-serif;
+  --maxw:1180px;--ease:cubic-bezier(.2,.7,.3,1);--shadow:0 24px 60px -20px rgba(19,49,42,.4);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.62;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacing:-.015em}
+::selection{background:var(--clay);color:#fff}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(22px,5vw,56px)}
+.pad{padding:clamp(80px,11vw,150px) 0}
+.kicker{font-family:var(--sans);font-weight:600;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--clay);display:inline-flex;align-items:center;gap:12px}
+.kicker::before{content:"";width:34px;height:1.5px;background:var(--clay)}
+.kicker.on-dark{color:var(--brass)}
+.kicker.on-dark::before{background:var(--brass)}
+.btn{display:inline-flex;align-items:center;gap:11px;font-family:var(--sans);font-weight:600;font-size:.96rem;padding:16px 30px;border-radius:2px;cursor:pointer;border:1.5px solid transparent;transition:transform .35s var(--ease),background .35s,color .35s,border-color .35s;min-height:52px}
+.btn svg{width:17px;height:17px}
+.btn-solid{background:var(--clay);color:#fff}
+.btn-solid:hover{background:#a94a24;transform:translateY(-2px)}
+.btn-line{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.btn-line:hover{background:rgba(255,255,255,.08);border-color:#fff;transform:translateY(-2px)}
+.btn-ink{background:var(--forest);color:#fff}
+.btn-ink:hover{background:var(--forest-700);transform:translateY(-2px)}
+.grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E")}
+header{position:fixed;inset:0 0 auto 0;z-index:100;transition:.4s var(--ease)}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:20px 0;transition:.4s var(--ease)}
+header.scrolled{background:var(--paper);box-shadow:0 1px 0 var(--line)}
+header.scrolled .bar{padding:12px 0}
+.brand{display:flex;align-items:center;gap:13px}
+.brand .mark{width:40px;height:40px;flex:none}
+.brand b{font-family:var(--serif);font-weight:600;font-size:1.3rem;color:#fff;transition:color .4s;letter-spacing:-.01em}
+.brand small{display:block;font-size:.64rem;letter-spacing:.08em;color:rgba(255,255,255,.6);text-transform:uppercase;transition:color .4s}
+header.scrolled .brand b{color:var(--forest)}
+header.scrolled .brand small{color:var(--ink-soft)}
+.menu{display:flex;align-items:center;gap:4px}
+.menu a{font-weight:500;font-size:.94rem;color:rgba(255,255,255,.82);padding:10px 15px;transition:color .3s}
+.menu a:hover{color:#fff}
+header.scrolled .menu a{color:var(--ink-soft)}
+header.scrolled .menu a:hover{color:var(--forest)}
+.menu .cta{margin-left:10px;background:var(--clay);color:#fff!important;padding:11px 22px;font-weight:600;border-radius:2px}
+.menu .cta:hover{background:#a94a24}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:10px}
+.burger span{width:24px;height:2px;background:#fff;transition:.3s}
+header.scrolled .burger span{background:var(--forest)}
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+/* slides */
+.slides{position:absolute;inset:0;z-index:0}
+.slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity 1.2s var(--ease),visibility 1.2s}
+.slide.active{opacity:1;visibility:visible}
+.slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.12);transition:transform 7s linear}
+.slide.active img{transform:scale(1)}
+.slide::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(19,49,42,.5) 0%,rgba(19,49,42,.32) 38%,rgba(11,26,22,.94) 100%)}
+.slide::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(11,26,22,.6) 0%,transparent 55%)}
+.hero .wrap{position:relative;z-index:3;width:100%;padding-bottom:clamp(70px,10vw,118px);padding-top:140px}
+.hero-inner{max-width:940px}
+.slide-tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:600;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);margin-bottom:20px}
+.slide-tag .no{font-family:var(--serif);font-style:italic;font-size:1rem;letter-spacing:0;color:rgba(255,255,255,.7);text-transform:none}
+.slide-tag::before{content:"";width:34px;height:1.5px;background:var(--brass)}
+.hero h1{font-size:clamp(2.5rem,6.2vw,5.2rem);font-weight:500;margin:0 0 22px;color:#fff;max-width:18ch}
+.hero h1 em{font-style:italic;color:var(--brass)}
+.hero .lead{font-size:clamp(1.06rem,1.6vw,1.3rem);color:rgba(255,255,255,.82);max-width:54ch;margin-bottom:36px;font-weight:400}
+/* animated in/out of slide text */
+.slide-copy{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.slide-copy.show>*{animation:copyIn .9s var(--ease) both}
+.slide-copy.show{opacity:1;transform:none}
+.slide-copy.show .slide-tag{animation-delay:.05s}
+.slide-copy.show h1{animation-delay:.16s}
+.slide-copy.show .lead{animation-delay:.28s}
+.slide-copy.show .hero-actions{animation-delay:.4s}
+@keyframes copyIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+/* controls */
+.hero-ui{position:absolute;left:0;right:0;bottom:34px;z-index:4}
+.hero-ui .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-top:0;padding-bottom:0;flex-wrap:wrap}
+.dots{display:flex;gap:14px;align-items:center}
+.dot{position:relative;background:none;border:0;cursor:pointer;font-family:var(--serif);font-size:.9rem;color:rgba(255,255,255,.45);padding:8px 2px;transition:color .35s;letter-spacing:.04em}
+.dot span{display:block;font-family:var(--sans);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;margin-top:3px;opacity:0;transform:translateY(4px);transition:.35s}
+.dot::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--clay);transition:width .35s var(--ease)}
+.dot.on{color:#fff}
+.dot.on span{opacity:1;transform:none}
+.dot.on::after{width:100%}
+.dot.on{animation:none}
+.dot .bar{position:absolute;left:0;bottom:0;height:2px;width:100%;background:rgba(255,255,255,.18)}
+.arrows{display:flex;gap:10px}
+.arrows button{width:50px;height:50px;border-radius:50%;border:1.5px solid rgba(255,255,255,.28);background:rgba(255,255,255,.05);color:#fff;cursor:pointer;display:grid;place-items:center;transition:.3s;backdrop-filter:blur(4px)}
+.arrows button:hover{background:var(--clay);border-color:var(--clay);transform:translateY(-2px)}
+.arrows svg{width:20px;height:20px}
+/* progress line */
+.hero-progress{position:absolute;left:0;bottom:0;height:3px;z-index:5;background:var(--clay);width:0}
+.hero-progress.run{transition:width 6s linear}
+@media(max-width:620px){
+  .hero-ui{bottom:20px}
+  .dot span{display:none}
+  .arrows{display:none}
+}
+.strip{background:var(--forest);color:rgba(255,255,255,.9);overflow:hidden;border-bottom:1px solid var(--line-light)}
+.strip .track{display:flex;gap:56px;padding:20px 0;white-space:nowrap;animation:scrollX 32s linear infinite;width:max-content}
+.strip .track span{display:inline-flex;align-items:center;gap:14px;font-family:var(--serif);font-style:italic;font-size:1.15rem;color:rgba(255,255,255,.75)}
+.strip .track span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--clay)}
+@keyframes scrollX{to{transform:translateX(-50%)}}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.lead-head{max-width:660px}
+.lead-head h2{font-size:clamp(2rem,4.2vw,3.3rem);margin:18px 0 16px}
+.lead-head p{color:var(--ink-soft);font-size:1.1rem}
+.about-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(36px,6vw,84px);align-items:center}
+.about-copy h2{font-size:clamp(2rem,4vw,3.2rem);margin:20px 0 22px;max-width:16ch}
+.about-copy p{color:var(--ink-soft);font-size:1.08rem;margin-bottom:20px;max-width:46ch}
+.about-list{list-style:none;margin-top:30px;display:grid;gap:16px}
+.about-list li{display:flex;gap:14px;align-items:flex-start;font-size:1.02rem}
+.about-list svg{width:22px;height:22px;color:var(--clay);flex:none;margin-top:3px}
+.about-fig{position:relative}
+.about-fig .main{position:relative;border-radius:3px;overflow:hidden;box-shadow:var(--shadow)}
+.about-fig .main img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.about-fig .badge{position:absolute;left:-34px;bottom:-30px;background:var(--forest);color:#fff;padding:26px 30px;border-radius:3px;max-width:230px;box-shadow:var(--shadow)}
+.about-fig .badge .n{font-family:var(--serif);font-size:2.6rem;line-height:1;color:var(--brass)}
+.about-fig .badge .t{font-size:.9rem;color:rgba(255,255,255,.78);margin-top:8px}
+.lines{background:var(--paper-deep)}
+.line{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(24px,4vw,56px);align-items:center;padding:38px 0;border-top:1px solid var(--line);transition:padding .4s var(--ease)}
+.line:last-child{border-bottom:1px solid var(--line)}
+.line .idx{font-family:var(--serif);font-size:1.1rem;color:var(--clay);width:44px}
+.line .body{max-width:640px}
+.line .body h3{font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:10px;transition:color .3s}
+.line .body p{color:var(--ink-soft);font-size:1.02rem;margin-bottom:12px}
+.line .body .tag{font-size:.82rem;font-weight:600;color:var(--forest-600);letter-spacing:.02em}
+.line .thumb{width:170px;height:120px;border-radius:3px;overflow:hidden;flex:none;position:relative;filter:grayscale(.35) saturate(.9);transition:filter .5s var(--ease),transform .5s var(--ease)}
+.line .thumb img{width:100%;height:100%;object-fit:cover}
+.line:hover{padding-left:14px}
+.line:hover .body h3{color:var(--clay)}
+.line:hover .thumb{filter:none;transform:scale(1.03)}
+.band{position:relative;color:#fff;overflow:hidden;background:var(--forest)}
+.band-photo{position:absolute;inset:0;z-index:0;overflow:hidden;opacity:.22}
+.band-photo img{width:100%;height:130%;object-fit:cover;will-change:transform}
+.band .wrap{position:relative;z-index:2}
+.band .lead-head h2{color:#fff}
+.band .lead-head p{color:rgba(255,255,255,.72)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-light);margin-top:56px;border:1px solid var(--line-light)}
+.step{background:var(--forest);padding:34px 26px;transition:background .4s}
+.step:hover{background:var(--forest-700)}
+.step .no{font-family:var(--serif);font-size:1rem;color:var(--brass)}
+.step h4{font-family:var(--sans);font-weight:600;font-size:1.14rem;margin:16px 0 10px}
+.step p{color:rgba(255,255,255,.68);font-size:.94rem}
+.commit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--line);margin-top:20px}
+.commit{padding:40px 40px 40px 0;border-bottom:1px solid var(--line);display:flex;gap:22px;align-items:flex-start}
+.commit:nth-child(odd){padding-right:56px}
+.commit:nth-child(even){padding-left:56px;border-left:1px solid var(--line)}
+.commit .ic{width:52px;height:52px;flex:none;border:1.5px solid var(--clay);border-radius:50%;display:grid;place-items:center}
+.commit .ic svg{width:24px;height:24px;color:var(--clay)}
+.commit h4{font-family:var(--serif);font-size:1.35rem;margin-bottom:8px}
+.commit p{color:var(--ink-soft);font-size:1rem}
+.contact{background:var(--forest);color:#fff;position:relative;overflow:hidden}
+.contact-photo{position:absolute;right:0;top:0;bottom:0;width:38%;z-index:0;opacity:.9}
+.contact-photo img{width:100%;height:100%;object-fit:cover}
+.contact-photo::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--forest) 0%,rgba(19,49,42,.2) 100%)}
+.contact .wrap{position:relative;z-index:2}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,80px);align-items:start}
+.contact-info h2{font-size:clamp(2rem,4vw,3rem);color:#fff;margin:18px 0 18px;max-width:12ch}
+.contact-info p{color:rgba(255,255,255,.75);font-size:1.06rem;margin-bottom:36px;max-width:40ch}
+.ci{display:flex;gap:16px;align-items:center;margin-bottom:22px}
+.ci .ic{width:46px;height:46px;flex:none;border:1px solid var(--line-light);border-radius:3px;display:grid;place-items:center}
+.ci .ic svg{width:20px;height:20px;color:var(--brass)}
+.ci .k{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.ci .v{font-size:1.08rem;color:#fff}
+.ci a.v:hover{color:var(--brass)}
+.form{background:var(--paper);color:var(--ink);border-radius:3px;padding:clamp(28px,4vw,44px);box-shadow:var(--shadow)}
+.form h3{font-size:1.5rem;margin-bottom:6px}
+.form>p.sub{color:var(--ink-soft);font-size:.95rem;margin-bottom:26px}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:18px}
+.field label{display:block;font-weight:600;font-size:.82rem;margin-bottom:7px}
+.field label .r{color:var(--clay)}
+.field input,.field select,.field textarea{width:100%;font-family:var(--sans);font-size:1rem;color:var(--ink);padding:13px 15px;border:1.5px solid var(--line);border-radius:2px;background:#fff;min-height:50px;transition:border-color .25s,box-shadow .25s}
+.field textarea{resize:vertical;min-height:112px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--clay);box-shadow:0 0 0 3px rgba(198,91,46,.18)}
+.field .err{color:#c0392b;font-size:.8rem;margin-top:6px;display:none}
+.field.bad input,.field.bad select,.field.bad textarea{border-color:#c0392b}
+.field.bad .err{display:block}
+.form .btn-ink{width:100%;justify-content:center;margin-top:4px}
+.form .fine{font-size:.8rem;color:var(--ink-soft);text-align:center;margin-top:14px}
+.ok{display:none;text-align:center;padding:36px 8px}
+.ok.show{display:block}
+.ok .circ{width:74px;height:74px;border-radius:50%;background:var(--forest);display:grid;place-items:center;margin:0 auto 20px;animation:pop .5s var(--ease)}
+.ok .circ svg{width:36px;height:36px;color:var(--brass)}
+.ok h3{font-size:1.5rem;margin-bottom:8px}
+.ok p{color:var(--ink-soft)}
+@keyframes pop{0%{transform:scale(.5);opacity:0}60%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+footer{background:#0d1a16;color:rgba(255,255,255,.66);padding:66px 0 30px}
+.foot{display:grid;grid-template-columns:1.7fr 1fr 1fr;gap:44px;padding-bottom:40px;border-bottom:1px solid var(--line-light)}
+.foot .brand b{color:#fff}.foot .brand small{color:rgba(255,255,255,.5)}
+.foot .about-foot{margin-top:16px;font-size:.95rem;max-width:34ch}
+.foot h5{font-family:var(--sans);font-weight:600;color:#fff;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
+.foot a,.foot span.li{display:block;font-size:.95rem;margin-bottom:11px;color:rgba(255,255,255,.6);transition:color .25s}
+.foot a:hover{color:var(--brass)}
+.foot-b{display:flex;justify-content:space-between;padding-top:24px;font-size:.85rem;color:rgba(255,255,255,.45);flex-wrap:wrap;gap:10px}
+.wa{position:fixed;right:22px;bottom:22px;z-index:200;width:60px;height:60px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 12px 30px rgba(37,211,102,.42);transition:transform .3s var(--ease);animation:wp 2.8s infinite}
+.wa:hover{transform:scale(1.08)}
+.wa svg{width:33px;height:33px;color:#fff}
+.wa .tip{position:absolute;right:74px;top:50%;transform:translateY(-50%) translateX(8px);opacity:0;pointer-events:none;background:var(--ink);color:#fff;font-weight:500;font-size:.85rem;padding:9px 15px;border-radius:6px;white-space:nowrap;transition:.3s}
+.wa .tip::after{content:"";position:absolute;right:-5px;top:50%;transform:translateY(-50%) rotate(45deg);width:10px;height:10px;background:var(--ink)}
+.wa:hover .tip{opacity:1;transform:translateY(-50%)}
+@keyframes wp{0%{box-shadow:0 12px 30px rgba(37,211,102,.42),0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 12px 30px rgba(37,211,102,.42),0 0 0 15px rgba(37,211,102,0)}100%{box-shadow:0 12px 30px rgba(37,211,102,.42),0 0 0 0 rgba(37,211,102,0)}}
+@media(max-width:940px){
+  .about-grid{grid-template-columns:1fr;gap:56px}
+  .about-fig{max-width:440px;margin:0 auto}
+  .about-fig .badge{left:16px}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .commit-grid{grid-template-columns:1fr}
+  .commit,.commit:nth-child(odd),.commit:nth-child(even){padding:32px 0;border-left:0}
+  .contact-grid{grid-template-columns:1fr;gap:44px}
+  .contact-photo{display:none}
+  .foot{grid-template-columns:1fr 1fr}.foot .brand{grid-column:1/-1}
+}
+@media(max-width:620px){
+  .menu{position:fixed;inset:0 0 0 auto;width:min(80vw,320px);height:100vh;flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;padding:40px;background:var(--forest);transform:translateX(100%);transition:transform .4s var(--ease)}
+  .menu.open{transform:none}
+  .menu a{color:#fff!important;font-size:1.15rem;padding:12px 0}
+  .burger{display:flex;z-index:101}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);background:#fff}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);background:#fff}
+  .line{grid-template-columns:1fr;gap:16px}
+  .line .thumb{width:100%;height:180px;order:-1}
+  .line .idx{display:none}
+  .frow{grid-template-columns:1fr}
+  .hero-meta div{padding-right:26px;margin-right:26px}
+  .foot{grid-template-columns:1fr}
+  .wa{width:54px;height:54px;right:16px;bottom:16px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header id="header">
+  <div class="wrap bar">
+    <a href="#top" class="brand" aria-label="Medhaan home">
+      <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect width="48" height="48" rx="10" fill="#c65b2e"/><path d="M12 34V16l7 7 5-5 5 5 7-7v18" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span><b>Medhaan</b><small>Infrastructure &amp; Services</small></span>
+    </a>
+    <nav class="menu" id="menu" aria-label="Primary">
+      <a href="#about">About</a><a href="#lines">Business Lines</a><a href="#approach">Approach</a><a href="#commitment">Commitment</a>
+      <a href="#contact" class="cta">Partner With Us</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<section class="hero grain" id="top" aria-roledescription="carousel" aria-label="Medhaan work highlights">
+  <div class="slides" id="slides" aria-live="polite">
+    <div class="slide active" data-tag="Infrastructure &amp; EPC" data-no="Our Work / 01" role="group" aria-label="1 of 5">
+      <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2000&auto=format&fit=crop" alt="Large-scale infrastructure and EPC project at dusk">
+    </div>
+    <div class="slide" data-tag="Telecom &amp; OFC" data-no="Our Work / 02" role="group" aria-label="2 of 5">
+      <img src="https://images.unsplash.com/photo-1620283085439-39620a1e21c4?q=80&w=2000&auto=format&fit=crop" alt="Fibre optic cabling and telecom network rollout">
+    </div>
+    <div class="slide" data-tag="IT Services" data-no="Our Work / 03" role="group" aria-label="3 of 5">
+      <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000&auto=format&fit=crop" alt="Technology operations and analytics workspace">
+    </div>
+    <div class="slide" data-tag="Water &amp; Utilities" data-no="Our Work / 04" role="group" aria-label="4 of 5">
+      <img src="https://images.unsplash.com/photo-1585951237318-9ea5e175b891?q=80&w=2000&auto=format&fit=crop" alt="Water treatment and public utilities infrastructure">
+    </div>
+    <div class="slide" data-tag="Governance &amp; Delivery" data-no="Our Work / 05" role="group" aria-label="5 of 5">
+      <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000&auto=format&fit=crop" alt="Project governance, planning and coordination">
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="slide-copy show" id="heroCopy">
+        <span class="slide-tag"><span id="hTag">Infrastructure &amp; EPC</span> <span class="no" id="hNo">Our Work / 01</span></span>
+        <h1 id="hTitle">We build the systems that <em>keep progress moving.</em></h1>
+        <p class="lead" id="hLead">Medhaan runs focused service lines under one governance umbrella — delivering through group entities, partners and project-specific SPVs.</p>
+        <div class="hero-actions">
+          <a href="#lines" class="btn btn-solid">Explore business lines <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          <a href="#contact" class="btn btn-line">Partner with us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-ui">
+    <div class="wrap">
+      <div class="dots" id="dots" role="tablist" aria-label="Choose slide"></div>
+      <div class="arrows">
+        <button id="prev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button id="next" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <div class="hero-progress" id="heroProgress"></div>
+</section>
+<div class="strip" aria-hidden="true">
+  <div class="track">
+    <span>Infrastructure &amp; EPC</span><span>Telecom &amp; OFC</span><span>IT Services</span><span>Water &amp; Utilities</span><span>Governance-first</span><span>Safety-led</span><span>Documentation-driven</span>
+    <span>Infrastructure &amp; EPC</span><span>Telecom &amp; OFC</span><span>IT Services</span><span>Water &amp; Utilities</span><span>Governance-first</span><span>Safety-led</span><span>Documentation-driven</span>
+  </div>
+</div>
+<section class="pad about" id="about">
+  <div class="wrap about-grid">
+    <div class="about-copy">
+      <span class="kicker reveal">About Medhaan</span>
+      <h2 class="reveal d1">One governance standard across every line we run.</h2>
+      <p class="reveal d1">Medhaan is a multi-sector holding company focused on execution-led delivery. We build and operate business lines under a single governance umbrella and execute through group entities, partners and project-specific SPVs.</p>
+      <p class="reveal d2">Our work supports government, PSU and enterprise clients who need reliable delivery, clean documentation and clear accountability from planning through handover.</p>
+      <ul class="about-list reveal d2">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Multi-sector business lines under one governance umbrella</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Delivery via group entities, partners and ring-fenced SPVs</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>Safety-first, documentation-led execution with clear escalation</li>
+      </ul>
+    </div>
+    <figure class="about-fig reveal d2">
+      <div class="main grain"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1400&auto=format&fit=crop" alt="Engineers reviewing plans on site"></div>
+      <div class="badge"><div class="n">4&times;</div><div class="t">verticals run to a single quality &amp; safety standard</div></div>
+    </figure>
+  </div>
+</section>
+<section class="pad lines" id="lines">
+  <div class="wrap">
+    <div class="lead-head reveal">
+      <span class="kicker">Business Lines</span>
+      <h2>Focused verticals. Ring-fenced delivery.</h2>
+      <p>Each line runs as a business unit or a project-specific SPV — structured for partnerships, compliant contracting and accountable execution.</p>
+    </div>
+    <div class="line reveal">
+      <div class="idx">01</div>
+      <div class="body"><h3>Infrastructure &amp; EPC</h3><p>Civil works, underground utilities, execution management and vendor control — planning through testing and handover, fully documented.</p><div class="tag">Best for — Government / PSU &amp; large private projects</div></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop" alt="Large-scale construction and EPC works"></div>
+    </div>
+    <div class="line reveal">
+      <div class="idx">02</div>
+      <div class="body"><h3>Telecom &amp; OFC</h3><p>Trenching &amp; ducting, cable laying, restoration and documentation — with disciplined QA/QC processes and a rigorous safety program.</p><div class="tag">Best for — EPC partners &amp; network operators</div></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1620283085439-39620a1e21c4?q=80&w=800&auto=format&fit=crop" alt="Fibre optic cabling and telecom infrastructure"></div>
+    </div>
+    <div class="line reveal">
+      <div class="idx">03</div>
+      <div class="body"><h3>IT Services</h3><p>Internal tooling, managed services and analytics enablement — technology that improves turnaround times and sharpens decisions.</p><div class="tag">Best for — Enterprises &amp; SMEs</div></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop" alt="Technology and systems operations"></div>
+    </div>
+    <div class="line reveal">
+      <div class="idx">04</div>
+      <div class="body"><h3>Water &amp; Utilities</h3><p>Utility execution support, O&amp;M processes and public-infrastructure coordination — with EHS discipline and a stakeholder-first approach.</p><div class="tag">Best for — Urban local bodies &amp; state agencies</div></div>
+      <div class="thumb"><img src="https://images.unsplash.com/photo-1585951237318-9ea5e175b891?q=80&w=800&auto=format&fit=crop" alt="Water treatment and utilities infrastructure"></div>
+    </div>
+  </div>
+</section>
+<section class="pad band grain" id="approach">
+  <div class="band-photo" aria-hidden="true"><img data-parallax="0.12" src="https://images.unsplash.com/photo-1590496793929-36417d3117de?q=80&w=2000&auto=format&fit=crop" alt=""></div>
+  <div class="wrap">
+    <div class="lead-head reveal">
+      <span class="kicker on-dark">How We Deliver</span>
+      <h2>Planning to handover — governed end to end.</h2>
+      <p>A disciplined delivery model that keeps large, multi-state execution accountable and auditable at every stage.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="no">01</div><h4>EPC delivery</h4><p>Planning, execution, testing and handover with full documentation and governance.</p></div>
+      <div class="step reveal d1"><div class="no">02</div><h4>JV / SPV structuring</h4><p>Ring-fenced SPVs, partner onboarding and compliant contracting &amp; reporting.</p></div>
+      <div class="step reveal d2"><div class="no">03</div><h4>Multi-state support</h4><p>Vendor management, local compliance coordination and milestone tracking.</p></div>
+      <div class="step reveal d3"><div class="no">04</div><h4>Tech-enabled ops</h4><p>Analytics and systems that improve turnaround times and decision-making.</p></div>
+    </div>
+  </div>
+</section>
+<section class="pad" id="commitment">
+  <div class="wrap">
+    <div class="lead-head reveal"><span class="kicker">Our Commitment</span><h2>Principles clients and partners rely on.</h2></div>
+    <div class="commit-grid">
+      <div class="commit reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h4>Safety-first delivery</h4><p>Disciplined execution and zero-compromise safety on every site.</p></div></div>
+      <div class="commit reveal d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke-linejoin="round"/><path d="M14 2v6h6M9 15h6M9 11h2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h4>Quality &amp; documentation</h4><p>Auditable records, defined standards and clean handovers.</p></div></div>
+      <div class="commit reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h4>Accountability</h4><p>Clear ownership, escalation paths and governance throughout.</p></div></div>
+      <div class="commit reveal d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3s6 6.5 6 11a6 6 0 11-12 0c0-4.5 6-11 6-11z" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><h4>Sustainability</h4><p>Responsible, long-term value creation in every project.</p></div></div>
+    </div>
+  </div>
+</section>
+<section class="pad contact" id="contact">
+  <div class="contact-photo" aria-hidden="true"><img src="https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?q=80&w=1200&auto=format&fit=crop" alt=""></div>
+  <div class="wrap contact-grid">
+    <div class="contact-info reveal">
+      <span class="kicker on-dark">Partner With Us</span>
+      <h2>Let's build something that lasts.</h2>
+      <p>Tell us about your project or partnership. We'll route you to the right people from the relevant business line.</p>
+      <div class="ci"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" stroke-linejoin="round"/><path d="M4 6l8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="k">Email</div><a class="v" href="mailto:contact@medhaan.in">contact@medhaan.in</a></div></div>
+      <div class="ci"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13 1 .36 1.94.7 2.85a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.23-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.85.7A2 2 0 0122 16.92z" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><div class="k">Phone</div><a class="v" href="tel:+919560043428">+91 95600 43428</a></div></div>
+      <div class="ci"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1118 0z" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="k">Location</div><div class="v">India</div></div></div>
+    </div>
+    <div class="form reveal d1">
+      <form id="inquiryForm" novalidate>
+        <h3>Send an inquiry</h3><p class="sub">We typically respond within 1&ndash;2 business days.</p>
+        <div class="frow">
+          <div class="field"><label for="name">Full name <span class="r">*</span></label><input id="name" name="name" type="text" autocomplete="name" required><div class="err">Please enter your name.</div></div>
+          <div class="field"><label for="company">Company</label><input id="company" name="company" type="text" autocomplete="organization"></div>
+        </div>
+        <div class="frow">
+          <div class="field"><label for="email">Email <span class="r">*</span></label><input id="email" name="email" type="email" autocomplete="email" required><div class="err">Enter a valid email.</div></div>
+          <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"></div>
+        </div>
+        <div class="field"><label for="interest">Area of interest <span class="r">*</span></label>
+          <select id="interest" name="interest" required><option value="">Select a business line&hellip;</option><option>Infrastructure &amp; EPC</option><option>Telecom &amp; OFC</option><option>IT Services</option><option>Water &amp; Utilities</option><option>JV / SPV Partnership</option><option>Other</option></select><div class="err">Please choose an option.</div>
+        </div>
+        <div class="field"><label for="message">Message <span class="r">*</span></label><textarea id="message" name="message" placeholder="Tell us briefly about your project or partnership&hellip;" required></textarea><div class="err">Please add a short message.</div></div>
+        <button type="submit" class="btn btn-ink">Send inquiry <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </form>
+      <div class="ok" id="ok" role="status" aria-live="polite"><div class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>Thank you</h3><p>Your inquiry has been noted &mdash; we'll be in touch shortly.</p></div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="brand" style="gap:13px"><svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect width="48" height="48" rx="10" fill="#c65b2e"/><path d="M12 34V16l7 7 5-5 5 5 7-7v18" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Medhaan Private Limited</b><small>Infrastructure &amp; Services</small></span></div>
+        <p class="about-foot">A multi-sector holding company for infrastructure, technology and services — built on governance, quality and accountability.</p>
+      </div>
+      <div><h5>Explore</h5><a href="#about">About</a><a href="#lines">Business Lines</a><a href="#approach">Approach</a><a href="#contact">Partner With Us</a></div>
+      <div><h5>Contact</h5><a href="mailto:contact@medhaan.in">contact@medhaan.in</a><a href="tel:+919560043428">+91 95600 43428</a><span class="li">India</span></div>
+    </div>
+    <div class="foot-b"><span>&copy; <span id="yr"></span> Medhaan Private Limited. All rights reserved.</span><span>Building Infrastructure. Powering Progress.</span></div>
+  </div>
+</footer>
+<a class="wa" href="https://wa.me/919560043428?text=Hi%20Medhaan%2C%20I%27d%20like%20to%20discuss%20a%20project%20%2F%20partnership." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <span class="tip">Chat with us</span>
+  <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-4.9 1 1-4.8-.2-.4c-1-1.6-1.5-3.4-1.5-5.3C5 9.5 9.9 4.9 16 4.9c5.6 0 10.1 4.5 10.1 10.1S21.6 24.8 16 24.8zm5.5-7.6c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.1-.1-.3-.2-.6-.4z"/></svg>
+</a>
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* ---------- Hero slider ---------- */
+(function(){
+  const slides=[...document.querySelectorAll('.slide')];
+  const copy=document.getElementById('heroCopy');
+  const hTag=document.getElementById('hTag'),hNo=document.getElementById('hNo'),hTitle=document.getElementById('hTitle'),hLead=document.getElementById('hLead');
+  const dotsWrap=document.getElementById('dots'),progress=document.getElementById('heroProgress');
+  const DUR=6000;
+  const content=[
+    {tag:'Infrastructure &amp; EPC',no:'Our Work / 01',short:'Infrastructure',title:'We build the systems that <em>keep progress moving.</em>',lead:'Civil works, underground utilities and full EPC delivery — planned, executed and handed over with governance and clean documentation.'},
+    {tag:'Telecom &amp; OFC',no:'Our Work / 02',short:'Telecom',title:'Connecting networks, <em>one route at a time.</em>',lead:'Trenching, ducting, cable laying and restoration with disciplined QA/QC and a rigorous safety program at every stage.'},
+    {tag:'IT Services',no:'Our Work / 03',short:'IT Services',title:'Technology that <em>sharpens every decision.</em>',lead:'Internal tooling, managed services and analytics enablement that improve turnaround times and operational visibility.'},
+    {tag:'Water &amp; Utilities',no:'Our Work / 04',short:'Utilities',title:'Delivering utilities <em>communities depend on.</em>',lead:'Utility execution support, O&amp;M processes and public-infrastructure coordination — with EHS discipline throughout.'},
+    {tag:'Governance &amp; Delivery',no:'Our Work / 05',short:'Governance',title:'One standard, <em>every project, every state.</em>',lead:'JV / SPV structuring, multi-state execution support and accountable, auditable delivery under a single governance umbrella.'}
+  ];
+  let i=0,timer=null;
+  const reduceMo=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // build dots
+  content.forEach((c,idx)=>{
+    const b=document.createElement('button');
+    b.className='dot'+(idx===0?' on':'');
+    b.setAttribute('role','tab');
+    b.setAttribute('aria-label',c.short);
+    b.innerHTML=String(idx+1).padStart(2,'0')+'<span>'+c.short+'</span><i class="bar"></i>';
+    b.addEventListener('click',()=>go(idx,true));
+    dotsWrap.appendChild(b);
+  });
+  const dots=[...dotsWrap.children];
+
+  function restartProgress(){
+    if(reduceMo) return;
+    progress.classList.remove('run');progress.style.width='0';
+    void progress.offsetWidth;
+    progress.classList.add('run');progress.style.width='100%';
+  }
+  function paint(n){
+    const c=content[n];
+    hTag.innerHTML=c.tag;hNo.textContent=c.no;hTitle.innerHTML=c.title;hLead.innerHTML=c.lead;
+    copy.classList.remove('show');void copy.offsetWidth;copy.classList.add('show');
+  }
+  function go(n,manual){
+    n=(n+slides.length)%slides.length;
+    slides[i].classList.remove('active');dots[i].classList.remove('on');
+    i=n;
+    slides[i].classList.add('active');dots[i].classList.add('on');
+    paint(i);restartProgress();
+    if(manual)reset();
+  }
+  function next(){go(i+1)}
+  function prev(){go(i-1)}
+  function reset(){if(timer)clearInterval(timer);if(!reduceMo)timer=setInterval(next,DUR)}
+
+  document.getElementById('next').addEventListener('click',()=>{next();reset()});
+  document.getElementById('prev').addEventListener('click',()=>{prev();reset()});
+
+  // keyboard
+  document.querySelector('.hero').addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'){next();reset()}
+    if(e.key==='ArrowLeft'){prev();reset()}
+  });
+  // pause on hover
+  const hero=document.querySelector('.hero');
+  hero.addEventListener('mouseenter',()=>{if(timer)clearInterval(timer);progress.style.width=getComputedStyle(progress).width;progress.classList.remove('run')});
+  hero.addEventListener('mouseleave',()=>{restartProgress();reset()});
+  // touch swipe
+  let sx=0;
+  hero.addEventListener('touchstart',e=>{sx=e.touches[0].clientX},{passive:true});
+  hero.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>50){dx<0?next():prev();reset()}},{passive:true});
+  // pause when tab hidden
+  document.addEventListener('visibilitychange',()=>{document.hidden?(timer&&clearInterval(timer)):reset()});
+
+  paint(0);restartProgress();reset();
+})();
+
+const header=document.getElementById('header');
+const onScroll=()=>header.classList.toggle('scrolled',scrollY>40);onScroll();addEventListener('scroll',onScroll,{passive:true});
+const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',()=>{const o=menu.classList.toggle('open');burger.classList.toggle('open',o);burger.setAttribute('aria-expanded',o)});
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false')}));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.14,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce){
+  const ps=[...document.querySelectorAll('[data-parallax]')];let t=false;
+  const up=()=>{ps.forEach(p=>{const s=p.closest('section');const rect=s.getBoundingClientRect();if(rect.bottom>0&&rect.top<innerHeight){const prog=(innerHeight-rect.top)/(innerHeight+rect.height);p.style.transform='translate3d(0,'+((prog-0.5)*rect.height*parseFloat(p.dataset.parallax)*2)+'px,0)'}});t=false};
+  addEventListener('scroll',()=>{if(!t){requestAnimationFrame(up);t=true}},{passive:true});up();
+}
+const form=document.getElementById('inquiryForm');
+const emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const bad=(f,b)=>f.closest('.field').classList.toggle('bad',b);
+form.addEventListener('submit',e=>{
+  e.preventDefault();let ok=true;
+  [[form.name,!form.name.value.trim()],[form.email,!emailRe.test(form.email.value.trim())],[form.interest,!form.interest.value],[form.message,!form.message.value.trim()]].forEach(([f,b])=>{bad(f,b);if(b)ok=false});
+  if(!ok){form.querySelector('.field.bad input,.field.bad select,.field.bad textarea')?.focus();return}
+  form.style.display='none';document.getElementById('ok').classList.add('show');
+});
+form.querySelectorAll('input,select,textarea').forEach(el=>el.addEventListener('input',()=>el.closest('.field').classList.remove('bad')));
+</script>
+</body>
+</html>
