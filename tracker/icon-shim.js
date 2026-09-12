@@ -31,6 +31,16 @@
   // directly as PascalCase keys on window.lucide (e.g. lucide.ChevronRight),
   // each holding raw icon node data: [tag, attrs, children].
   function buildIconComponent(nodeData) {
+    // Different lucide UMD versions have shipped the per-icon data in
+    // slightly different shapes over time:
+    //   - a plain array of [tag, attrs] pairs: [["path", {...}], ...]
+    //   - the same array wrapped in an object: { iconNode: [["path", {...}], ...] }
+    // Normalize to the plain array shape before rendering, so this works
+    // regardless of which shape the loaded version uses.
+    const resolvedNodes = Array.isArray(nodeData)
+      ? nodeData
+      : (nodeData && Array.isArray(nodeData.iconNode) ? nodeData.iconNode : null);
+
     return function LucideIcon(props) {
       const { size = 24, color = "currentColor", strokeWidth = 2, className, style, ...rest } = props || {};
       const attrs = {
@@ -47,11 +57,26 @@
         style,
         ...rest,
       };
-      const children = (nodeData || []).map(function (child, i) {
+
+      if (!resolvedNodes) {
+        // Unknown/unexpected shape — render an empty (but valid) svg
+        // instead of crashing the whole app.
+        return React.createElement("svg", attrs);
+      }
+
+      const children = resolvedNodes.map(function (child, i) {
+        // Guard against any entry that isn't a proper [tag, attrs] pair —
+        // render nothing for that one node rather than passing a bad
+        // `type` into React.createElement (which is what crashed the
+        // whole app previously).
+        if (!Array.isArray(child) || typeof child[0] !== "string") {
+          return null;
+        }
         const tag = child[0];
         const childAttrs = Object.assign({ key: i }, child[1]);
         return React.createElement(tag, childAttrs);
       });
+
       return React.createElement("svg", attrs, children);
     };
   }
@@ -60,6 +85,12 @@
     console.error("Lucide UMD build not found on window.lucide — check the <script> order in index.html.");
     return;
   }
+
+  // One-time diagnostic: print the raw shape of a known icon so we can see
+  // exactly what this lucide build's icon data looks like, in case the
+  // normalization above ever needs adjusting for a future version.
+  console.log("[icon-shim] diagnostic — raw shape of window.lucide.icons.Flame:", window.lucide.icons && window.lucide.icons.Flame);
+  console.log("[icon-shim] diagnostic — window.lucide.icons keys sample:", window.lucide.icons ? Object.keys(window.lucide.icons).slice(0, 5) : "icons object missing");
 
   // Fallback so a missing/renamed icon never crashes the whole app with a
   // blank white screen (React error #130: "element type is invalid").
