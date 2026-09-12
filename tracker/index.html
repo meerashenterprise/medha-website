@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Medhaan Tracker</title>
+
+<!-- Tailwind CSS via CDN (JIT, no build step) -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Fonts used by the app -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet" />
+
+<style>
+  html, body, #medhaan-tracker-root { height: 100%; }
+  body { margin: 0; font-family: 'Inter', sans-serif; }
+</style>
+</head>
+<body>
+
+<div id="medhaan-tracker-root"></div>
+
+<!-- React + ReactDOM (production builds) -->
+<script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+<!-- Babel standalone: lets the browser compile the JSX in app.jsx on the fly.
+     This is what makes a "no build step" React setup possible. It does cost
+     a brief compile time on page load — fine for an internal tool, but if
+     this ever needs to feel instant, a real build step (Vite/Next.js) would
+     pre-compile this once instead of every page load. -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<!-- SheetJS (xlsx) for the "Export to Excel" buttons -->
+<script src="https://unpkg.com/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+<!-- Lucide icon library (vanilla build) — provides the raw icon data that
+     icon-shim.js turns into React components matching app.jsx's imports -->
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.js"></script>
+
+<!-- Bridges lucide's vanilla icon data to React components as globals -->
+<script src="./icon-shim.js"></script>
+
+<!-- The app itself. type="text/babel" tells the Babel script above to
+     compile this file's JSX before running it. -->
+<script type="text/babel" src="./app.jsx"></script>
+
+</body>
+</html>
