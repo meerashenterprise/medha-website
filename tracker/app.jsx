@@ -15,6 +15,8 @@ const { useState, useMemo, useEffect } = React;
 const NAV = [
   { id: "projects", label: "Projects", icon: FolderKanban },
   { id: "overview", label: "Project overview", icon: LayoutDashboard },
+  { id: "lmcdaily", label: "LMC daily update", icon: Zap },
+  { id: "lmcdpr", label: "LMC DPR", icon: ClipboardList },
   { id: "dailyprogress", label: "Daily work progress", icon: ClipboardList },
   { id: "tasks", label: "Task manager", icon: ListTodo },
   { id: "dpr", label: "Linear progress & DPR", icon: ClipboardList },
@@ -31,12 +33,41 @@ const NAV = [
 // ---------- Projects (client / location wise) ----------
 
 const PROJECTS_SEED = [
-  { id: "bpcl-erode-01", name: "Laying & construction of 3LPE coated CS underground pipeline (CGD)", client: "BPCL", location: "Erode, Tamil Nadu", length: "25.4 km", status: "Active", contract: "PMC: M/s Tractebel Engineering — Vichitra Constructions" },
-  { id: "gail-mp-01", name: "MP-Gujarat pipeline augmentation", client: "GAIL", location: "Madhya Pradesh – Gujarat", length: "25.4 km", status: "Active", contract: "MED/GAS/2026-014" },
-  { id: "bgcl-guw-01", name: "Guwahati city gas distribution", client: "BGCL", location: "Guwahati, Assam", length: "11.2 km", status: "Active", contract: "MED/GAS/2026-021" },
-  { id: "gail-ur-02", name: "Urja Ganga spur line — Ranchi", client: "GAIL", location: "Ranchi, Jharkhand", length: "18.7 km", status: "Active", contract: "MED/GAS/2025-098" },
-  { id: "bgcl-sil-01", name: "Silchar CGD network phase 2", client: "BGCL", location: "Silchar, Assam", length: "8.9 km", status: "On hold", contract: "MED/GAS/2025-076" },
-  { id: "gail-vzg-01", name: "Vizag steel corridor tie-in", client: "GAIL", location: "Visakhapatnam, AP", length: "6.3 km", status: "Completed", contract: "MED/GAS/2024-112" },
+  {
+    id: "bpcl-erode-01",
+    name: "Laying & construction of 3LPE coated CS underground pipeline (CGD)",
+    client: "BPCL", location: "Erode, Tamil Nadu", length: "25.4 km", status: "Active",
+    contract: "PMC: M/s Tractebel Engineering — Vichitra Constructions",
+    startDate: "", finishDate: "", value: "",
+  },
+  {
+    id: "gail-varanasi-lmc",
+    name: "Last Mile Connectivity (LMC) works",
+    client: "GAIL", location: "Varanasi, Uttar Pradesh", length: "", status: "Active",
+    contract: "BANDR/GAIL/71150/EOI-01/LMC/VARANASI/FOA/26-27/40",
+    startDate: "", finishDate: "", value: "",
+  },
+  {
+    id: "gail-patna-lmc",
+    name: "Last Mile Connectivity (LMC) works",
+    client: "GAIL", location: "Patna, Bihar", length: "", status: "Active",
+    contract: "BANDR/GAIL/71150/EOI-01/LMC/PATNA/FOA/26-27/72",
+    startDate: "", finishDate: "", value: "",
+  },
+  {
+    id: "ofc-laying-01",
+    name: "Laying of Optical Fibre Cable",
+    client: "—", location: "", length: "", status: "Active",
+    contract: "",
+    startDate: "", finishDate: "", value: "",
+  },
+  {
+    id: "bgcl-kolkata-01",
+    name: 'Execution of laying of steel pipeline of 12" diameter x 2.20 km section length from Larica Building to Hela Battala',
+    client: "Bengal Gas Company Limited", location: "Kolkata GA, West Bengal", length: "2.20 km", status: "Active",
+    contract: "",
+    startDate: "", finishDate: "", value: "",
+  },
 ];
 
 // ---------- BPCL Erode — daily work progress (from site DPR sheet) ----------
@@ -312,6 +343,65 @@ const CHECKLISTS_SEED = [
   },
 ];
 
+// ---------- LMC (Last Mile Connectivity) daily update & DPR ----------
+// Modeled on the field team's actual WhatsApp-style daily update and DPR
+// formats for domestic PNG connections (GI/MDPE last-mile work).
+
+const LMC_DAILY_UPDATES_SEED = [
+  {
+    id: "ldu-1",
+    date: "2026-09-12",
+    location: "Pandey Mahal",
+    contractor: "Medhaan Engineering",
+    activities: [
+      "GI work in progress — Pandey Mahal",
+      "GC work in progress",
+      "GI pipeline testing work in progress",
+    ],
+    giTeam: 4,
+    ngTeam: 0,
+    mdpeTeam: 0,
+  },
+];
+
+// Each LMC DPR entry captures one day's Today/Total/Scope figures,
+// broken down location-wise, matching the field team's WhatsApp format.
+const LMC_DPR_SEED = [
+  {
+    id: "ldpr-1",
+    date: "2026-09-11",
+    foaNo: "40",
+    // Overall scope-level rollup for the day (Today / Total / Scope)
+    connection: { today: 7, total: 82, scope: 200 },
+    meterInstallation: { today: 7, total: 82, scope: 200 },
+    conversion: { today: 2, total: 2, scope: 200 },
+    jmrTd: { today: 2, total: 2, scope: 3 },
+    giHalfInch: { today: 75, total: 1120, scope: 1980 },
+    giThreeQuarterInch: { today: 0, total: 0, scope: 0 },
+    retesting: { today: 0, total: 0, scope: 0 },
+    mdpe20mm: { today: 5, total: 5, scope: 100 },
+    mdpe32mm: { today: 0, total: 0, scope: 500 },
+    mainlineTF: { today: 1, total: 1, scope: 1 },
+    upto1_5mtr: { today: 0, total: 0, scope: 0 },
+    mt1_5mtr: { today: 0, total: 0, scope: 0 },
+    rccMarker: { today: 0, total: 0, scope: 0 },
+    poleMark: { today: 0, total: 0, scope: 0 },
+    platMark: { today: 1, total: 1, scope: 1 },
+    valveChamber: { today: 0, total: 0, scope: 0 },
+    commissioning32mm: { today: 0, total: 0 },
+    commissioning20mm: { today: 5, total: 5 },
+    giTeamCount: 4,
+    labourCount: 0,
+    // Location-wise breakdown (Today / Total only, per the field format)
+    locations: [
+      { name: "Pandey Mahal", connection: { today: 82, total: 200 }, meterInstallation: { today: 82, total: 200 }, giHalfInch: { today: 1120, total: 1980 }, conversion: { today: 0, total: 0 }, td: { today: 0, total: 0 } },
+      { name: "Pandey Mahal", connection: { today: 0, total: 0 }, meterInstallation: { today: 82, total: 0 }, giHalfInch: { today: 1120, total: 1980 }, conversion: { today: 0, total: 0 }, td: { today: 2, total: 3 }, mdpe20mm: { today: 5, total: 5 }, mainlineTF: { today: 1, total: 1 } },
+      { name: "Pandey Mahal", connection: { today: 82, total: 0 }, meterInstallation: { today: 82, total: 200 }, giHalfInch: { today: 1120, total: 1980 }, conversion: { today: 5, total: 5 }, td: { today: 2, total: 3 } },
+    ],
+  },
+];
+
+
 // ---------- Formatting helpers ----------
 
 const inr = (n) =>
@@ -416,6 +506,60 @@ async function deleteSheetRow(tabName, keyField, keyValue) {
   }
 }
 
+// Uploads a file (image or document) to the Drive folder managed by the
+// connected Apps Script. Returns { ok, url, fileName } — `url` is a
+// shareable "anyone with the link can view" Drive link, safe to store in
+// a sheet cell or show as a link in the tracker.
+function readFileAsBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      // reader.result is a data: URL like "data:image/jpeg;base64,....";
+      // strip the prefix, Apps Script only wants the raw base64 payload.
+      const commaIdx = reader.result.indexOf(",");
+      resolve(commaIdx >= 0 ? reader.result.slice(commaIdx + 1) : reader.result);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+async function uploadFileToDrive(file, { tab, recordId } = {}) {
+  const cfg = getSheetsConfig();
+  if (!cfg.webAppUrl) return { ok: false, reason: "not_connected" };
+
+  // A rough size guard — Apps Script web app requests have practical
+  // payload limits well under this, so warn early rather than let a
+  // large file silently fail partway through.
+  const MAX_BYTES = 8 * 1024 * 1024; // 8MB
+  if (file.size > MAX_BYTES) {
+    return { ok: false, reason: `File is ${(file.size / 1024 / 1024).toFixed(1)}MB — please keep uploads under 8MB` };
+  }
+
+  try {
+    const base64Data = await readFileAsBase64(file);
+    const res = await fetch(cfg.webAppUrl, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain" },
+      body: JSON.stringify({
+        action: "uploadFile",
+        fileName: file.name,
+        mimeType: file.type || "application/octet-stream",
+        base64Data,
+        tab: tab || "General",
+        recordId: recordId || "",
+      }),
+    });
+    if (!res.ok) throw new Error(`Upload failed: ${res.status}`);
+    const data = await res.json();
+    if (!data.ok) throw new Error(data.error || "Upload failed");
+    return { ok: true, url: data.url, downloadUrl: data.downloadUrl, fileName: data.fileName };
+  } catch (err) {
+    console.warn("Drive upload failed:", err.message);
+    return { ok: false, reason: err.message };
+  }
+}
+
 // ---------- Excel export utility ----------
 // Builds a real, multi-sheet .xlsx client-side via SheetJS. Every export
 // screen supplies { filename, sheets: [{ name, rows: [{...}] }] }.
@@ -444,6 +588,128 @@ function ExportButton({ onClick, label = "Export to Excel" }) {
     >
       <FileSpreadsheet size={15} /> {label}
     </button>
+  );
+}
+
+// ---------- File / image uploader (saves to Drive via the connected sheet) ----------
+// Reusable across DPR, Daily Update, LMC DPR, JMS/billing — anywhere an
+// attachment makes sense. `tab` tags which section's Drive subfolder the
+// file lands in; `recordId` (optional) is prefixed onto the filename so
+// it's traceable back to the row it belongs to.
+// `attachments` / `onChange` follow the standard controlled-list pattern:
+// pass the current array of {url, fileName} objects, get the updated
+// array back after an upload or removal.
+
+function FileUploader({ tab, recordId, attachments = [], onChange, accept, label = "Attach files" }) {
+  const [uploading, setUploading] = useState(false);
+  const [progress, setProgress] = useState({ done: 0, total: 0 });
+  const [error, setError] = useState("");
+  const [dragOver, setDragOver] = useState(false);
+  const sheetsConnected = getSheetsConfig().connected;
+
+  const handleFiles = async (fileList) => {
+    const files = Array.from(fileList || []);
+    if (files.length === 0) return;
+
+    if (!sheetsConnected) {
+      setError("Connect Google Sheets first (Projects page) — uploads save into your connected Drive.");
+      return;
+    }
+
+    setError("");
+    setUploading(true);
+    setProgress({ done: 0, total: files.length });
+
+    const uploaded = [];
+    for (let i = 0; i < files.length; i++) {
+      const result = await uploadFileToDrive(files[i], { tab, recordId });
+      if (result.ok) {
+        uploaded.push({ url: result.url, downloadUrl: result.downloadUrl, fileName: result.fileName });
+      } else {
+        setError(`"${files[i].name}" failed: ${result.reason}`);
+      }
+      setProgress({ done: i + 1, total: files.length });
+    }
+
+    if (uploaded.length > 0 && onChange) {
+      onChange([...attachments, ...uploaded]);
+    }
+    setUploading(false);
+  };
+
+  const removeAttachment = (idx) => {
+    if (!onChange) return;
+    onChange(attachments.filter((_, i) => i !== idx));
+  };
+
+  const isImage = (fileName) => /\.(jpe?g|png|gif|webp|heic)$/i.test(fileName || "");
+
+  return (
+    <div>
+      <div
+        onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
+        onDragLeave={() => setDragOver(false)}
+        onDrop={(e) => {
+          e.preventDefault();
+          setDragOver(false);
+          handleFiles(e.dataTransfer.files);
+        }}
+        className={`flex flex-col items-center justify-center gap-2 rounded-md border-2 border-dashed py-6 text-center transition-colors ${
+          dragOver ? "border-orange-400 bg-orange-50/40" : "border-slate-300"
+        }`}
+      >
+        {uploading ? (
+          <>
+            <span className="h-5 w-5 animate-spin rounded-full border-2 border-orange-500 border-t-transparent" />
+            <p className="text-xs text-slate-600">Uploading {progress.done}/{progress.total}…</p>
+          </>
+        ) : (
+          <>
+            <Camera size={20} className="text-slate-500" />
+            <p className="text-xs text-slate-600">Drag files here, or click to browse</p>
+            <label className="mt-1 flex cursor-pointer items-center gap-1.5 rounded-md border border-slate-300 px-3 py-1.5 text-xs text-slate-700 hover:border-slate-400">
+              <Paperclip size={13} /> {label}
+              <input
+                type="file"
+                multiple
+                accept={accept}
+                className="hidden"
+                onChange={(e) => { handleFiles(e.target.files); e.target.value = ""; }}
+              />
+            </label>
+          </>
+        )}
+      </div>
+
+      {error && (
+        <p className="mt-2 flex items-center gap-1.5 text-xs text-rose-600">
+          <AlertTriangle size={12} /> {error}
+        </p>
+      )}
+
+      {attachments.length > 0 && (
+        <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+          {attachments.map((a, i) => (
+            <div key={i} className="group relative overflow-hidden rounded-md border border-slate-200 bg-slate-50">
+              <a href={a.url} target="_blank" rel="noopener noreferrer" className="flex h-20 flex-col items-center justify-center gap-1 p-2 text-center">
+                {isImage(a.fileName) ? (
+                  <FileImage size={20} className="text-slate-400" />
+                ) : (
+                  <FileText size={20} className="text-slate-400" />
+                )}
+                <span className="line-clamp-2 text-[10px] text-slate-600">{a.fileName}</span>
+              </a>
+              <button
+                onClick={() => removeAttachment(i)}
+                className="absolute right-1 top-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-slate-400 opacity-0 shadow-sm transition-opacity hover:text-rose-600 group-hover:opacity-100"
+              >
+                <X size={12} />
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -998,6 +1264,362 @@ function RadialStat({ pct: value, size = 132, stroke = 12, color = "#ff6b1a", tr
   );
 }
 
+// ---------- LMC Daily Update (quick daily plan, matches field WhatsApp format) ----------
+
+function LMCDailyUpdate() {
+  const [updates, setUpdates] = useState(LMC_DAILY_UPDATES_SEED);
+  const [addingOpen, setAddingOpen] = useState(false);
+  const [form, setForm] = useState({
+    date: new Date().toISOString().slice(0, 10),
+    location: "", contractor: "Medhaan Engineering",
+    activitiesText: "", giTeam: "", ngTeam: "", mdpeTeam: "",
+  });
+  const [attachments, setAttachments] = useState([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const rows = await readSheetTab("LMCDailyUpdates", null);
+      if (!cancelled && rows && rows.length > 0) {
+        setUpdates(rows.map((r) => ({
+          id: r.id, date: r.date, location: r.location, contractor: r.contractor,
+          activities: (r.activities || "").split("|").filter(Boolean),
+          giTeam: parseFloat(r.giTeam) || 0, ngTeam: parseFloat(r.ngTeam) || 0, mdpeTeam: parseFloat(r.mdpeTeam) || 0,
+          attachments: (r.attachments || "").split("|").filter(Boolean).map((url) => ({ url, fileName: url.split("/").pop() || "attachment" })),
+        })));
+      }
+    })();
+    return () => { cancelled = true; };
+  }, []);
+
+  const handleExport = () => {
+    exportToExcel({
+      filename: `Medhaan_LMC_Daily_Update_${new Date().toISOString().slice(0, 10)}.xlsx`,
+      sheets: [{
+        name: "Daily Updates",
+        rows: updates.map((u) => ({
+          Date: u.date, Location: u.location, Contractor: u.contractor,
+          Activities: u.activities.join(" | "),
+          "GI Team": u.giTeam, "NG Team": u.ngTeam, "MDPE Team": u.mdpeTeam,
+        })),
+      }],
+    });
+  };
+
+  const addUpdate = () => {
+    if (!form.location.trim() || !form.date) return;
+    const id = `ldu-${Date.now()}`;
+    const activities = form.activitiesText.split("\n").map((l) => l.trim()).filter(Boolean);
+    const row = {
+      id, date: form.date, location: form.location, contractor: form.contractor,
+      activities, giTeam: parseFloat(form.giTeam) || 0, ngTeam: parseFloat(form.ngTeam) || 0, mdpeTeam: parseFloat(form.mdpeTeam) || 0,
+      attachments,
+    };
+    setUpdates((prev) => [row, ...prev]);
+    setForm({ date: new Date().toISOString().slice(0, 10), location: "", contractor: "Medhaan Engineering", activitiesText: "", giTeam: "", ngTeam: "", mdpeTeam: "" });
+    setAttachments([]);
+    setAddingOpen(false);
+    writeSheetRow("LMCDailyUpdates", {
+      ...row, activities: activities.join("|"),
+      attachments: attachments.map((a) => a.url).join("|"),
+    }, "id");
+  };
+
+  return (
+    <div>
+      <SectionHeader
+        title="LMC daily update"
+        description="Quick daily plan per location — matches the field team's WhatsApp update format"
+        action={
+          <div className="flex gap-2">
+            <ExportButton onClick={handleExport} />
+            <button onClick={() => setAddingOpen(true)} className="flex items-center gap-1.5 rounded-md bg-orange-500 px-3 py-2 text-sm font-medium text-slate-950 hover:bg-orange-400">
+              <Plus size={15} /> Add today's update
+            </button>
+          </div>
+        }
+      />
+
+      {addingOpen && (
+        <div className="mb-4 rounded-lg border border-orange-300 bg-orange-50/40 p-4">
+          <p className="mb-2.5 text-sm font-semibold text-slate-800">New daily update</p>
+          <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-3">
+            <input type="date" value={form.date} onChange={(e) => setForm((f) => ({ ...f, date: e.target.value }))} className="rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 focus:border-orange-500/50 focus:outline-none" />
+            <input value={form.location} onChange={(e) => setForm((f) => ({ ...f, location: e.target.value }))} placeholder="Location (e.g. Pandey Mahal)" className="rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 placeholder:text-slate-500 focus:border-orange-500/50 focus:outline-none" />
+            <input value={form.contractor} onChange={(e) => setForm((f) => ({ ...f, contractor: e.target.value }))} placeholder="Contractor name" className="rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 placeholder:text-slate-500 focus:border-orange-500/50 focus:outline-none" />
+          </div>
+          <textarea
+            value={form.activitiesText}
+            onChange={(e) => setForm((f) => ({ ...f, activitiesText: e.target.value }))}
+            placeholder={"One activity per line, e.g.\nGI work in progress — Pandey Mahal\nGC work in progress\nGI pipeline testing work in progress"}
+            rows={4}
+            className="mt-2.5 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 placeholder:text-slate-500 focus:border-orange-500/50 focus:outline-none"
+          />
+          <div className="mt-2.5 grid grid-cols-3 gap-2.5">
+            <div>
+              <label className="mb-1 block text-xs text-slate-500">GI team</label>
+              <input type="number" value={form.giTeam} onChange={(e) => setForm((f) => ({ ...f, giTeam: e.target.value }))} placeholder="0" className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm tabular-nums text-slate-800 placeholder:text-slate-400 focus:border-orange-500/50 focus:outline-none" />
+            </div>
+            <div>
+              <label className="mb-1 block text-xs text-slate-500">NG team</label>
+              <input type="number" value={form.ngTeam} onChange={(e) => setForm((f) => ({ ...f, ngTeam: e.target.value }))} placeholder="0" className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm tabular-nums text-slate-800 placeholder:text-slate-400 focus:border-orange-500/50 focus:outline-none" />
+            </div>
+            <div>
+              <label className="mb-1 block text-xs text-slate-500">MDPE team</label>
+              <input type="number" value={form.mdpeTeam} onChange={(e) => setForm((f) => ({ ...f, mdpeTeam: e.target.value }))} placeholder="0" className="w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm tabular-nums text-slate-800 placeholder:text-slate-400 focus:border-orange-500/50 focus:outline-none" />
+            </div>
+          </div>
+          <div className="mt-3">
+            <label className="mb-1 block text-xs text-slate-500">Site photos (optional)</label>
+            <FileUploader tab="LMCDailyUpdates" recordId={form.date} attachments={attachments} onChange={setAttachments} accept="image/*" label="Attach photos" />
+          </div>
+          <div className="mt-3 flex gap-2">
+            <button onClick={addUpdate} className="rounded-md bg-orange-500 px-3 py-1.5 text-xs font-medium text-slate-950 hover:bg-orange-400">Save update</button>
+            <button onClick={() => setAddingOpen(false)} className="rounded-md border border-slate-200 px-3 py-1.5 text-xs text-slate-600 hover:border-slate-300">Cancel</button>
+          </div>
+        </div>
+      )}
+
+      <div className="space-y-3">
+        {updates.map((u) => (
+          <div key={u.id} className="overflow-hidden rounded-lg border border-slate-200 bg-white">
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 bg-slate-50 px-4 py-2.5">
+              <div className="flex items-center gap-3">
+                <span className="flex items-center gap-1 text-sm font-semibold text-slate-800"><CalendarDays size={14} className="text-slate-500" /> {u.date}</span>
+                <span className="flex items-center gap-1 text-sm text-slate-600"><MapPin size={14} className="text-slate-500" /> {u.location}</span>
+              </div>
+              <span className="text-xs text-slate-500">Contractor: <span className="font-medium text-slate-700">{u.contractor}</span></span>
+            </div>
+            <div className="p-4">
+              <ul className="space-y-1.5 text-sm text-slate-700">
+                {u.activities.map((a, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-orange-500" />
+                    {a}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-3 flex gap-4 border-t border-slate-100 pt-3 text-xs text-slate-600">
+                <span>GI Team: <span className="font-semibold text-slate-800">{u.giTeam}</span></span>
+                <span>NG Team: <span className="font-semibold text-slate-800">{u.ngTeam}</span></span>
+                <span>MDPE Team: <span className="font-semibold text-slate-800">{u.mdpeTeam}</span></span>
+              </div>
+              {u.attachments && u.attachments.length > 0 && (
+                <div className="mt-3 flex flex-wrap gap-2 border-t border-slate-100 pt-3">
+                  {u.attachments.map((a, i) => (
+                    <a key={i} href={a.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 rounded-md border border-slate-200 bg-slate-50 px-2 py-1 text-[11px] text-slate-600 hover:border-slate-300">
+                      <FileImage size={12} /> {a.fileName}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ---------- LMC DPR (detailed Today/Total/Scope tracker) ----------
+
+function TTSCell({ block }) {
+  if (!block) return <span className="text-slate-400">—</span>;
+  return (
+    <span className="tabular-nums">
+      <span className="font-semibold text-slate-800">{block.today}</span>
+      <span className="text-slate-400">/{block.total}</span>
+      {block.scope != null && <span className="text-slate-400">/{block.scope}</span>}
+    </span>
+  );
+}
+
+const LMC_DPR_METRICS = [
+  { key: "connection", label: "Connection" },
+  { key: "meterInstallation", label: "Meter installation" },
+  { key: "conversion", label: "Conversion" },
+  { key: "jmrTd", label: "JMR TD" },
+  { key: "giHalfInch", label: 'Total GI 1/2"' },
+  { key: "giThreeQuarterInch", label: 'Total GI 3/4"' },
+  { key: "retesting", label: "Retesting" },
+];
+
+const LMC_MDPE_METRICS = [
+  { key: "mdpe20mm", label: "20mm" },
+  { key: "mdpe32mm", label: "32mm" },
+  { key: "mainlineTF", label: "Mainline TF" },
+  { key: "upto1_5mtr", label: "Upto 1.5mtr" },
+  { key: "mt1_5mtr", label: "M/T 1.5mtr" },
+  { key: "rccMarker", label: "RCC marker" },
+  { key: "poleMark", label: "Pole mark" },
+  { key: "platMark", label: "Plat mark" },
+  { key: "valveChamber", label: "Valve chamber" },
+];
+
+function LMCDPR() {
+  const [entries, setEntries] = useState(LMC_DPR_SEED);
+  const [openId, setOpenId] = useState(LMC_DPR_SEED[0]?.id || null);
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const rows = await readSheetTab("LMCDpr", null);
+      if (!cancelled && rows && rows.length > 0) {
+        // Sheet rows are stored flattened (see writeSheetRow calls below);
+        // reconstruct the nested {today,total,scope} shape for display.
+        setEntries(rows.map((r) => {
+          const metric = (prefix) => ({
+            today: parseFloat(r[`${prefix}Today`]) || 0,
+            total: parseFloat(r[`${prefix}Total`]) || 0,
+            scope: r[`${prefix}Scope`] !== undefined ? parseFloat(r[`${prefix}Scope`]) || 0 : undefined,
+          });
+          return {
+            id: r.id, date: r.date, foaNo: r.foaNo,
+            connection: metric("connection"), meterInstallation: metric("meterInstallation"),
+            conversion: metric("conversion"), jmrTd: metric("jmrTd"),
+            giHalfInch: metric("giHalfInch"), giThreeQuarterInch: metric("giThreeQuarterInch"),
+            retesting: metric("retesting"), mdpe20mm: metric("mdpe20mm"), mdpe32mm: metric("mdpe32mm"),
+            mainlineTF: metric("mainlineTF"), upto1_5mtr: metric("upto1_5mtr"), mt1_5mtr: metric("mt1_5mtr"),
+            rccMarker: metric("rccMarker"), poleMark: metric("poleMark"), platMark: metric("platMark"),
+            valveChamber: metric("valveChamber"),
+            commissioning32mm: { today: parseFloat(r.commissioning32mmToday) || 0, total: parseFloat(r.commissioning32mmTotal) || 0 },
+            commissioning20mm: { today: parseFloat(r.commissioning20mmToday) || 0, total: parseFloat(r.commissioning20mmTotal) || 0 },
+            giTeamCount: parseFloat(r.giTeamCount) || 0, labourCount: parseFloat(r.labourCount) || 0,
+            locations: [],
+          };
+        }));
+      }
+    })();
+    return () => { cancelled = true; };
+  }, []);
+
+  const handleExport = () => {
+    exportToExcel({
+      filename: `Medhaan_LMC_DPR_${new Date().toISOString().slice(0, 10)}.xlsx`,
+      sheets: [{
+        name: "LMC DPR",
+        rows: entries.map((e) => {
+          const flat = { Date: e.date, "FOA No": e.foaNo };
+          [...LMC_DPR_METRICS, ...LMC_MDPE_METRICS].forEach((m) => {
+            const b = e[m.key];
+            if (b) flat[`${m.label} (T/Tot/Scope)`] = `${b.today}/${b.total}${b.scope != null ? "/" + b.scope : ""}`;
+          });
+          flat["GI Team"] = e.giTeamCount;
+          flat["Labour"] = e.labourCount;
+          return flat;
+        }),
+      }],
+    });
+  };
+
+  return (
+    <div>
+      <SectionHeader
+        title="LMC DPR"
+        description="Last mile connectivity — daily progress report, Today / Total / Scope per metric"
+        action={<ExportButton onClick={handleExport} />}
+      />
+
+      <div className="space-y-3">
+        {entries.map((e) => {
+          const isOpen = openId === e.id;
+          return (
+            <div key={e.id} className="overflow-hidden rounded-lg border border-slate-200 bg-white">
+              <button onClick={() => setOpenId(isOpen ? null : e.id)} className="flex w-full items-center justify-between px-4 py-3.5 text-left">
+                <div className="flex items-center gap-3">
+                  <span className="flex items-center gap-1 text-sm font-semibold text-slate-800"><CalendarDays size={14} className="text-slate-500" /> {e.date}</span>
+                  <StatusPill tone="neutral">FOA {e.foaNo}</StatusPill>
+                </div>
+                <div className="flex items-center gap-4 text-xs text-slate-500">
+                  <span>Connections today: <span className="font-semibold text-slate-800">{e.connection.today}</span></span>
+                  <ChevronDown size={16} className={`transition-transform ${isOpen ? "rotate-180" : ""}`} />
+                </div>
+              </button>
+
+              {isOpen && (
+                <div className="border-t border-slate-100 px-4 pb-4 pt-3">
+                  <p className="mb-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Scope metrics (Today / Total / Scope)</p>
+                  <div className="grid grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-3 md:grid-cols-4">
+                    {LMC_DPR_METRICS.map((m) => (
+                      <div key={m.key} className="rounded-md bg-slate-50 px-3 py-2">
+                        <p className="text-[11px] text-slate-500">{m.label}</p>
+                        <p className="mt-0.5"><TTSCell block={e[m.key]} /></p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <p className="mb-2 mt-4 text-[11px] font-semibold uppercase tracking-wide text-slate-500">MDPE laying (Today / Total / Scope)</p>
+                  <div className="grid grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-3 md:grid-cols-4">
+                    {LMC_MDPE_METRICS.map((m) => (
+                      <div key={m.key} className="rounded-md bg-slate-50 px-3 py-2">
+                        <p className="text-[11px] text-slate-500">{m.label}</p>
+                        <p className="mt-0.5"><TTSCell block={e[m.key]} /></p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <p className="mb-2 mt-4 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Commissioning &amp; crew</p>
+                  <div className="grid grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-4">
+                    <div className="rounded-md bg-slate-50 px-3 py-2">
+                      <p className="text-[11px] text-slate-500">Commissioning 32mm</p>
+                      <p className="mt-0.5 tabular-nums"><span className="font-semibold text-slate-800">{e.commissioning32mm.today}</span><span className="text-slate-400">/{e.commissioning32mm.total}</span></p>
+                    </div>
+                    <div className="rounded-md bg-slate-50 px-3 py-2">
+                      <p className="text-[11px] text-slate-500">Commissioning 20mm</p>
+                      <p className="mt-0.5 tabular-nums"><span className="font-semibold text-slate-800">{e.commissioning20mm.today}</span><span className="text-slate-400">/{e.commissioning20mm.total}</span></p>
+                    </div>
+                    <div className="rounded-md bg-slate-50 px-3 py-2">
+                      <p className="text-[11px] text-slate-500">GI team</p>
+                      <p className="mt-0.5 font-semibold tabular-nums text-slate-800">{e.giTeamCount}</p>
+                    </div>
+                    <div className="rounded-md bg-slate-50 px-3 py-2">
+                      <p className="text-[11px] text-slate-500">Labour</p>
+                      <p className="mt-0.5 font-semibold tabular-nums text-slate-800">{e.labourCount}</p>
+                    </div>
+                  </div>
+
+                  {e.locations && e.locations.length > 0 && (
+                    <>
+                      <p className="mb-2 mt-4 text-[11px] font-semibold uppercase tracking-wide text-slate-500">Location-wise (Today / Total)</p>
+                      <div className="overflow-x-auto rounded-md border border-slate-200">
+                        <table className="w-full min-w-[600px] text-left text-sm">
+                          <thead>
+                            <tr className="border-b border-slate-200 bg-slate-50 text-[11px] uppercase tracking-wide text-slate-500">
+                              <th className="px-3 py-2 font-medium">Location</th>
+                              <th className="px-3 py-2 font-medium">Connection</th>
+                              <th className="px-3 py-2 font-medium">Meter install</th>
+                              <th className="px-3 py-2 font-medium">GI 1/2"</th>
+                              <th className="px-3 py-2 font-medium">Conversion</th>
+                              <th className="px-3 py-2 font-medium">TD</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {e.locations.map((loc, i) => (
+                              <tr key={i} className="border-b border-slate-100 last:border-0">
+                                <td className="px-3 py-2 text-slate-700">{loc.name}</td>
+                                <td className="px-3 py-2"><TTSCell block={loc.connection} /></td>
+                                <td className="px-3 py-2"><TTSCell block={loc.meterInstallation} /></td>
+                                <td className="px-3 py-2"><TTSCell block={loc.giHalfInch} /></td>
+                                <td className="px-3 py-2"><TTSCell block={loc.conversion} /></td>
+                                <td className="px-3 py-2"><TTSCell block={loc.td} /></td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </>
+                  )}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+      <p className="mt-3 text-[11px] text-slate-500">To log a new day's DPR, add a row to the LMCDpr tab in your connected Google Sheet — it will appear here automatically.</p>
+    </div>
+  );
+}
+
 function ProjectOverview({ activeProjectId, onOpenDPR }) {
   const stageMix = useMemo(() => computeStageMix(SPREADS), []);
   const overallPct = useMemo(() => {
@@ -1359,6 +1981,7 @@ function DPRFormModal({ open, onClose }) {
     pilot: "", reaming: "", pullthrough: "",
     safetyTopic: "", attendees: "", hazard: "",
   });
+  const [attachments, setAttachments] = useState([]);
 
   if (!open) return null;
   const set = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }));
@@ -1468,13 +2091,14 @@ function DPRFormModal({ open, onClose }) {
 
           <div>
             <h3 className="mb-2.5 text-sm font-semibold text-slate-800">Site photos</h3>
-            <div className="flex flex-col items-center justify-center gap-2 rounded-md border-2 border-dashed border-slate-200 py-8 text-center">
-              <Camera size={22} className="text-slate-500" />
-              <p className="text-xs text-slate-600">Drag geo-tagged site images here, or click to browse</p>
-              <button className="mt-1 flex items-center gap-1.5 rounded-md border border-slate-300 px-3 py-1.5 text-xs text-slate-600 hover:border-slate-400">
-                <Paperclip size={13} /> Attach files
-              </button>
-            </div>
+            <FileUploader
+              tab="DPR"
+              recordId={`dpr-${new Date().toISOString().slice(0, 10)}`}
+              attachments={attachments}
+              onChange={setAttachments}
+              accept="image/*"
+              label="Attach site photos"
+            />
           </div>
         </div>
 
@@ -2444,7 +3068,7 @@ function statusTone(s) {
   return s === "Active" ? "success" : s === "On hold" ? "warning" : s === "Completed" ? "active" : "neutral";
 }
 
-const EMPTY_PROJECT_FORM = { name: "", client: "", location: "", length: "", status: "Active", contract: "" };
+const EMPTY_PROJECT_FORM = { name: "", client: "", location: "", length: "", status: "Active", contract: "", startDate: "", finishDate: "", value: "" };
 
 // ---------- Google Sheets connection card ----------
 
@@ -2569,6 +3193,18 @@ function ProjectFormFields({ form, setForm }) {
         <option>Completed</option>
       </select>
       <input value={form.contract} onChange={set("contract")} placeholder="Contract ref / PMC" className="rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-800 placeholder:text-slate-500 focus:border-orange-500/50 focus:outline-none sm:col-span-2" />
+      <div>
+        <label className="mb-1 block text-xs text-slate-500">Start date</label>
+        <input type="date" value={form.startDate} onChange={set("startDate")} className="w-full rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-800 focus:border-orange-500/50 focus:outline-none" />
+      </div>
+      <div>
+        <label className="mb-1 block text-xs text-slate-500">Finish date</label>
+        <input type="date" value={form.finishDate} onChange={set("finishDate")} className="w-full rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-800 focus:border-orange-500/50 focus:outline-none" />
+      </div>
+      <div className="sm:col-span-2">
+        <label className="mb-1 block text-xs text-slate-500">Project value (INR)</label>
+        <input value={form.value} onChange={set("value")} placeholder="e.g. 4,50,00,000" className="w-full rounded-md border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-800 placeholder:text-slate-500 focus:border-orange-500/50 focus:outline-none" />
+      </div>
     </div>
   );
 }
@@ -2607,7 +3243,7 @@ function ProjectsPage({ projects, setProjects, activeProject, onSelect, onSheets
 
   const startEdit = (p) => {
     setEditingId(p.id);
-    setEditForm({ name: p.name, client: p.client, location: p.location, length: p.length, status: p.status, contract: p.contract });
+    setEditForm({ name: p.name, client: p.client, location: p.location, length: p.length, status: p.status, contract: p.contract, startDate: p.startDate || "", finishDate: p.finishDate || "", value: p.value || "" });
   };
 
   const saveEdit = async (id) => {
@@ -2748,6 +3384,13 @@ function ProjectsPage({ projects, setProjects, activeProject, onSelect, onSheets
                 <p className="mt-1 flex items-center gap-1 text-xs text-slate-600">
                   <MapPin size={12} /> {p.location}
                 </p>
+                {(p.startDate || p.finishDate || p.value) && (
+                  <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-slate-500">
+                    {p.startDate && <span>Start: <span className="font-medium text-slate-700">{p.startDate}</span></span>}
+                    {p.finishDate && <span>Finish: <span className="font-medium text-slate-700">{p.finishDate}</span></span>}
+                    {p.value && <span>Value: <span className="font-medium text-slate-700">₹{p.value}</span></span>}
+                  </div>
+                )}
                 <div className="mt-3 flex items-center justify-between border-t border-slate-200 pt-2.5">
                   <span className="text-xs text-slate-600">{p.length}</span>
                   {isActive ? (
@@ -2973,6 +3616,8 @@ function MedhaanTracker() {
     switch (active) {
       case "projects": return <ProjectsPage projects={projects} setProjects={setProjects} activeProject={activeProject} onSelect={selectProject} onSheetsConnected={() => setSheetsReady((v) => !v)} />;
       case "overview": return <ProjectOverview activeProjectId={activeProject} onOpenDPR={() => setDprOpen(true)} />;
+      case "lmcdaily": return <LMCDailyUpdate />;
+      case "lmcdpr": return <LMCDPR />;
       case "dailyprogress": return <DailyWorkProgress activeProjectId={activeProject} />;
       case "tasks": return <TaskManager />;
       case "dpr": return <DPRSection onOpen={() => setDprOpen(true)} />;

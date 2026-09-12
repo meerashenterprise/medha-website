@@ -23,7 +23,7 @@
     "ListTodo", "LayoutGrid", "CircleDot", "Paperclip", "Menu", "Building2",
     "ListChecks", "Trash2", "Fuel", "Radio", "Hammer", "Shield", "PackageSearch",
     "Check", "FolderKanban", "Pencil", "Save", "FileSpreadsheet", "TrendingUp",
-    "Route", "Waves", "Sparkles", "ArrowRight", "Zap"
+    "Route", "Waves", "Sparkles", "ArrowRight", "Zap", "FileImage", "FileText"
   ];
 
   // lucide's PascalCase export names differ slightly in casing/format from
