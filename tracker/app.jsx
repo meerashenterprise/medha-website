@@ -2080,7 +2080,15 @@ function BOQItemTracker() {
 
 // ---------- Resource Rate Tracker ----------
 
-const RESOURCE_ICONS = { flame: Flame, radio: Radio, fuel: Fuel, hammer: Hammer, wallet: Wallet, shield: Shield };
+// NOTE: built lazily inside the component (not at module load time). In
+// this no-build setup, icon components are attached to `window` by
+// icon-shim.js; referencing them as bare identifiers at module-evaluation
+// time risks capturing `undefined` if anything runs out of order, and that
+// `undefined` would be baked into this object permanently. Building it
+// inside the component guarantees icon-shim.js has already run first.
+function getResourceIcons() {
+  return { flame: Flame, radio: Radio, fuel: Fuel, hammer: Hammer, wallet: Wallet, shield: Shield };
+}
 const RESOURCE_COLORS = {
   welding: "#ff6b1a", radiography: "#1d5a8a", diesel: "#b45309",
   consumables: "#7c3aed", imprest: "#059669", restorations: "#0f2942",
@@ -2178,7 +2186,7 @@ function ResourceRateTracker() {
 
       <div className="mt-4 space-y-3">
         {categories.map((cat) => {
-          const Icon = RESOURCE_ICONS[cat.icon] || PackageSearch;
+          const Icon = getResourceIcons()[cat.icon] || PackageSearch;
           const catColor = RESOURCE_COLORS[cat.id] || "#ff6b1a";
           const ct = catTotals(cat);
           const over = ct.actual > ct.budgeted;
